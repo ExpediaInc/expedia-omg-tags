@@ -1,12 +1,12 @@
 if(utag_data.pageInfo.pageName.indexOf("page.Package-Search.Mobile,P,20") > -1){
     if(Exp.Model.selectedRoomModel.attributes.packageOffers.hotelsCollection.models[0] != undefined){
         utag_data["countryCode"] = Exp.Model.selectedRoomModel.attributes.packageOffers.hotelsCollection.models[0].attributes.hotelAddress.countryAlpha3Code;
-        utag_data["countryName"] = getCountryName(utag_data["countryCode"]);
+        utag_data["countryName"] = utag.getCountryName(utag_data["countryCode"]);
         utag_data["entity.packageFHSearch.packageFHSearchParameters.arrivalCountryName"] = utag_data["countryName"];
     }
 }
 
-function getCountryName(countryCode){
+window.utag.getCountryName = function(countryCode){
     var countries = [
         {"name":"Afghanistan","alphaThree":"AFG","countryCode":"004"},
         {"name":"Åland Islands","alphaThree":"ALA","countryCode":"248"},

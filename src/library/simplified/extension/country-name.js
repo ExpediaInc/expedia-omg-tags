@@ -28,7 +28,7 @@ else if((utag.isPSR_FHC() || utag.isPSR_FC() || utag.isPIS_FlightHotel()) &&
     b["country"] = b["entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalCountry"];
 }
 else if (utag.isFSR() && b["entity.flightSearch.searchParameters.arrivalCountry"] != undefined){
-    b["country"] = b["entity.flightSearch.searchParameters.arrivalCountry"];
+    b["country"] = utag.getCountryName(b["entity.flightSearch.searchParameters.arrivalCountry"]);
 }
 else if (utag.isMCO()) {
     if (b["entity.checkout.hotels.0.hotelCountryName"] != undefined) {
