@@ -120,9 +120,9 @@ try {
         /* Start Tag Sending Code */
 
          u.data._kpid = u.data._kpid || '3d8e4b51-b537-4841-9086-4f59862457c6';
-         // u.data['checkout.activity.activityDetail.title']  = u.data['checkout.activity.activityDetail.title'] || b['checkout.activity.activityDetail.title'] || ""; 
-         // u.data['checkout.trl'] = u.data['checkout.trl'] || b['checkout.trl'] || "";
-         // u.data['checkout.customerFacingItineraryNumber'] = u.data['checkout.customerFacingItineraryNumber'] || b['checkout.customerFacingItineraryNumber'] || "";
+         u.data['checkout.activity.activityDetail.title']  = u.data['checkout.activity.activityDetail.title'] || b['checkout.activity.activityDetail.title'] || ""; 
+         u.data['checkout.trl'] = u.data['checkout.trl'] || b['checkout.trl'] || "";
+         u.data['checkout.customerFacingItineraryNumber'] = u.data['checkout.customerFacingItineraryNumber'] || b['checkout.customerFacingItineraryNumber'] || "";
          u.data.currencyCode = u.data.currencyCode || b.currencyCode || "";
          u.data['checkout.cartTotal.amount'] = u.data['checkout.cartTotal.amount'] || b['checkout.cartTotal.amount'] || "";
          u.data.bookingDateInUTC = u.data.bookingDateInUTC || getDate();
