@@ -5,9 +5,11 @@ if((utag.isCarCO() || utag.isCarPymt() || utag.isHCO() || utag.isPRateDetails())
         b["NonUsFlag"] = "true";
     }
 }
-else if((utag.isPSR_FH_Responsive() || utag.isPIS_FH()) && b.entity.packageSearch != undefined
+else if((utag.isPSR() || utag.isPSR_FH_Responsive() || utag.isPIS_FH()) && b.entity.packageSearch != undefined
     && b.entity.packageSearch.packageSearchParameters.flightSearchParameters != undefined
-    && b.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState != undefined){
+    && b.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState != undefined
+    && b["entity.packageSearch.packageSearchParameters.flightSearchParameters.departureCountry"] != undefined)
+{
     var arrivalInfo = b["entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalCountry"];
     if(!arrivalInfo.equals(b["entity.packageSearch.packageSearchParameters.flightSearchParameters.departureCountry"])){
         b["NonUsFlag"] = "true";
@@ -34,42 +36,3 @@ else if(utag.isFCO() && b['entity.checkout.flightOffer.arrivalCountryName'] != u
         b["NonUsFlag"] = "true";
     }
 }
-
-/** old
- utag_data["NonUsFlag"] = "false";
- if((utag.isCarCO() || utag.isCarPymt() || utag.isHCO() || utag.isPRateDetails()) && utag_data["countryCode"])
- {
-     if(utag_data["countryCode"].indexOf("US") == -1){
-         utag_data["NonUsFlag"] = "true";
-     }
- }
- else if((utag.isPSR_FH_Responsive() || utag.isPIS_FH()) && utag_data.entity.packageSearch != undefined
- && utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters != undefined
- && utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState != undefined){
-    var arrivalInfo = utag_data["entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalCountry"];
-    if(!arrivalInfo.equals(utag_data["entity.packageSearch.packageSearchParameters.flightSearchParameters.departureCountry"])){
-        utag_data["NonUsFlag"] = "true";
-    }
-}
- else if(utag.isFSR() && utag_data['entity.flightSearch.searchParameters.arrivalCountry'] != undefined)
- {
-   if(utag_data['entity.flightSearch.searchParameters.arrivalCountry'].indexOf("US") == -1)
-   {
-     utag_data["NonUsFlag"] = "true";
-   }
- }
- else if(utag.isFRateDetails() && utag_data['entity.tripDetails.flightOffer.arrivalCountryName'] != undefined)
- {
-     if(utag_data['entity.tripDetails.flightOffer.arrivalCountryName'].indexOf("US") == -1)
-   {
-     utag_data["NonUsFlag"] = "true";
-   }
- }
- else if(utag.isFCO() && utag_data['entity.checkout.flightOffer.arrivalCountryName'] != undefined)
- {
-     if(utag_data['entity.checkout.flightOffer.arrivalCountryName'].indexOf("US") == -1)
-   {
-     utag_data["NonUsFlag"] = "true";
-   }
- }
- **/

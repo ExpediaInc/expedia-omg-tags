@@ -17,107 +17,110 @@ function getDate() {
 /* End Tag Library Code */
 
 try {
-  (function (id, loader) {
-    var u = {};
-    utag.o[loader].sender[id] = u;
+    (function (id, loader) {
+        var u = {};
+        utag.o[loader].sender[id] = u;
 
-    // Start Tealium loader 4.32
-    // Please do not modify
-    if (utag === undefined) { utag = {}; } if (utag.ut === undefined) { utag.ut = {}; } if (utag.ut.loader === undefined) { u.loader = function (o) { var a, b, c, l; a = document; if (o.type === "iframe") { b = a.createElement("iframe"); b.setAttribute("height", "1"); b.setAttribute("width", "1"); b.setAttribute("style", "display:none"); b.setAttribute("src", o.src); } else if (o.type === "img") { utag.DB("Attach img: " + o.src); b = new Image(); b.src = o.src; return; } else { b = a.createElement("script"); b.language = "javascript"; b.type = "text/javascript"; b.async = 1; b.charset = "utf-8"; b.src = o.src; } if (o.id) { b.id = o.id; } if (typeof o.cb === "function") { if (b.addEventListener) { b.addEventListener("load", function () { o.cb(); }, false); } else { b.onreadystatechange = function () { if (this.readyState === "complete" || this.readyState === "loaded") { this.onreadystatechange = null; o.cb(); } }; } } l = o.loc || "head"; c = a.getElementsByTagName(l)[0]; if (c) { utag.DB("Attach to " + l + ": " + o.src); if (l === "script") { c.parentNode.insertBefore(b, c); } else { c.appendChild(b); } } }; } else { u.loader = utag.ut.loader; }
-    // End Tealium loader
+        // Start Tealium loader 4.32
+        // Please do not modify
+        if (utag === undefined) { utag = {}; } if (utag.ut === undefined) { utag.ut = {}; } if (utag.ut.loader === undefined) { u.loader = function (o) { var a, b, c, l; a = document; if (o.type === "iframe") { b = a.createElement("iframe"); b.setAttribute("height", "1"); b.setAttribute("width", "1"); b.setAttribute("style", "display:none"); b.setAttribute("src", o.src); } else if (o.type === "img") { utag.DB("Attach img: " + o.src); b = new Image(); b.src = o.src; return; } else { b = a.createElement("script"); b.language = "javascript"; b.type = "text/javascript"; b.async = 1; b.charset = "utf-8"; b.src = o.src; } if (o.id) { b.id = o.id; } if (typeof o.cb === "function") { if (b.addEventListener) { b.addEventListener("load", function () { o.cb(); }, false); } else { b.onreadystatechange = function () { if (this.readyState === "complete" || this.readyState === "loaded") { this.onreadystatechange = null; o.cb(); } }; } } l = o.loc || "head"; c = a.getElementsByTagName(l)[0]; if (c) { utag.DB("Attach to " + l + ": " + o.src); if (l === "script") { c.parentNode.insertBefore(b, c); } else { c.appendChild(b); } } }; } else { u.loader = utag.ut.loader; }
+        // End Tealium loader
 
-    u.ev = {'view' : 1};
+        u.ev = {'view' : 1};
 
-    u.initialized = false;
+        u.initialized = false;
 
     ##UTGEN##
 
     u.send = function(a, b) {
-      if (u.ev[a] || u.ev.all !== undefined) {
-        //##UTENABLEDEBUG##utag.DB("send:##UTID##");
+        if (u.ev[a] || u.ev.all !== undefined) {
+            //##UTENABLEDEBUG##utag.DB("send:##UTID##");
 
-        var c, d, e, f, i, j;
-        u.data = {
-          "_kpid" : "", 
-          "base_url" : "//beacon.krxd.net/transaction.gif?",
-          "checkout.trl": "",
-          "checkout.customerFacingItineraryNumber": "",
-          "transInfo": "",
-          "currencyCode": "",
-          "checkout.cartTotal.amount": "",
-          "bookingDateInUTC": "",
-          "quantity": "",
-          "carVendor": "",
-          "carType": "",
-          "carPickUpLocationCode": "",
-          "carDropOffLocationCode": "",
-          "cruiseLine": "",
-          "cruiseTitle": "",
-          "departureMonth": "",
-          "cabinClass": "",
-          "adults": "",
-          "childrenCount": "",
-          "numberOfGuests": "",
-          "destination": "",
-          "regionId": "",
-          "destinationAirportCode": "",
-          "origin": "",
-          "originAirportCode": "",
-          "bookingWindow": "",
-          "lengthOfStay": "",
-          "checkInDate": "",
-          "checkOutDate": "",
-          "city": "",
-          "state": "",
-          "stateProvinceCode": "",
-          "countryCode": "",
-          "roomNights": "",
-          "tripType": "",
-          "carrierCodes": "",
-          "lengthOfFlight": "",
-          "starRating": "",
-          "guestRating": "",
-          "hotelBrand": "",
-          "hotelName": "",
-          "hotelID": "",
-          "numberOfRooms": "",
-          // "roomType": "",
-          "packageType": "",
-          "SiteBrand": "",
-          "pointofsales": "",
-          "lob.domain": "",
-          "siteName": "",
-          "siteId": "",
-          "rewardsStatus.membershipTier": "",
-          "loggedUser": "",
-          "device.device.type": "",
-          "activityName": "",
-          "isInternationalBooking":"",
-          "context.marketingAttribution.restrictedLastTouch":"",
-          "pageInfo.language":"",
-        };
-	// error when scoping a lookup table to tag (uses c array) - updated array to j
-        j = [];
-	
-        /* Start Tag-Scoped Extensions Code */
-        /* Please Do Not Edit This Section */
+            var c, d, e, f, i, j;
+            u.data = {
+                "_kpid" : "",
+                "base_url" : "//beacon.krxd.net/transaction.gif?",
+                // "checkout.trl": "",
+                // "checkout.customerFacingItineraryNumber": "",
+                "transInfo": "",
+                "currencyCode": "",
+                "checkout.cartTotal.amount": "",
+                "bookingDateInUTC": "",
+                "quantity": "",
+                "krux_quantity": "",
+                "carVendor": "",
+                "carType": "",
+                "carPickUpLocationCode": "",
+                "carDropOffLocationCode": "",
+                "cruiseLine": "",
+                "cruiseTitle": "",
+                "departureMonth": "",
+                "cabinClass": "",
+                "adults": "",
+                "childrenCount": "",
+                "numberOfGuests": "",
+                "destination": "",
+                "regionId": "",
+                "destinationAirportCode": "",
+                "origin": "",
+                "originAirportCode": "",
+                "bookingWindow": "",
+                "lengthOfStay": "",
+                "checkInDate": "",
+                "checkOutDate": "",
+                "city": "",
+                "state": "",
+                "stateProvinceCode": "",
+                "countryCode": "",
+                "roomNights": "",
+                "tripType": "",
+                "carrierCodes": "",
+                "lengthOfFlight": "",
+                "starRating": "",
+                "guestRating": "",
+                "hotelBrand": "",
+                "hotelName": "",
+                "hotelID": "",
+                "numberOfRooms": "",
+                "roomType": "",
+                "packageType": "",
+                "SiteBrand": "",
+                "pointofsales": "",
+                "lob.domain": "",
+                "siteName": "",
+                "siteId": "",
+                "rewardsStatus.membershipTier": "",
+                "loggedUser": "",
+                "device.device.type": "",
+                "activityName": "",
+                "isInternationalBooking":"",
+                "context.marketingAttribution.restrictedLastTouch":"",
+                "pageInfo.language":"",
+                "mergedDestinationCode": "",
+                "mergedOriginCode": "",
+            };
+            // error when scoping a lookup table to tag (uses c array) - updated array to j
+            j = [];
+
+            /* Start Tag-Scoped Extensions Code */
+            /* Please Do Not Edit This Section */
         ##UTEXTEND##
-        /* End Tag-Scoped Extensions Code */
+            /* End Tag-Scoped Extensions Code */
 
 
-        /* Start Mapping Code */
-        for (d in utag.loader.GV(u.map)) {
-          if (b[d] !== undefined && b[d] !== "") {
-            e = u.map[d].split(",");
-            for (f = 0; f < e.length; f++) {
-              u.data[e[f]] = b[d];
+            /* Start Mapping Code */
+            for (d in utag.loader.GV(u.map)) {
+                if (b[d] !== undefined && b[d] !== "") {
+                    e = u.map[d].split(",");
+                    for (f = 0; f < e.length; f++) {
+                        u.data[e[f]] = b[d];
+                    }
+                }
             }
-          }
-        }
-        /* End Mapping Code */
+            /* End Mapping Code */
 
 
-        /* Start Tag Sending Code */
+            /* Start Tag Sending Code */
 
          u.data._kpid = u.data._kpid || '3d8e4b51-b537-4841-9086-4f59862457c6';
          u.data['checkout.activity.activityDetail.title']  = u.data['checkout.activity.activityDetail.title'] || b['checkout.activity.activityDetail.title'] || ""; 
@@ -178,24 +181,23 @@ try {
          u.data['pageInfo.language'] = u.data['pageInfo.language'] || b['pageInfo.language'] || "";
          u.data.roomType = u.data.roomType || b.roomType|| "";
 
-         for (key in u.data) {
-          if(u.data.hasOwnProperty(key)) {
-            if (u.data[key] != "")
-              j.push(key+"="+u.data[key])
-          }
-         }
+            for (key in u.data) {
+                if(u.data.hasOwnProperty(key)) {
+                    if (u.data[key] != "")
+                        j.push(key+"="+u.data[key])
+                }
+            }
 
-        /* End Tag Sending Code */
+            /* End Tag Sending Code */
 
-        u.loader({"type" : "img", "src" : u.data.base_url + j.join("&") });
+            u.loader({"type" : "img", "src" : u.data.base_url + j.join("&") });
 
-        utag.DB("send:##UTID##:COMPLETE");
-      }
+            utag.DB("send:##UTID##:COMPLETE");
+        }
     };
-    utag.o[loader].loader.LOAD(id);
-  })("##UTID##", "##UTLOADERID##");
+        utag.o[loader].loader.LOAD(id);
+    })("##UTID##", "##UTLOADERID##");
 } catch (error) {
-  utag.DB(error);
+    utag.DB(error);
 }
 //end tealium universal tag
-
