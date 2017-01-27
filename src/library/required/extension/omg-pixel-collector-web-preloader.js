@@ -121,7 +121,11 @@
         batched = batched || false;
         var base = omg.isProd() ? COLLECTOR_WEB_PROD : COLLECTOR_WEB_TEST;
         if(s3AndKafka){
-            return base + '/' + messageType + '.json?stream=true&persist=true&batch=' + batched;
+            if(omg.isProd()) {
+                return base + '/' + messageType + '.json?stream=false&persist=true&batch=' + batched;
+            } else {
+                return base + '/' + messageType + '.json?stream=true&persist=true&batch=' + batched;   
+            }
         }
         else {
             return base + '/' + messageType + '.json?stream=true&persist=false&batch=' + batched;
