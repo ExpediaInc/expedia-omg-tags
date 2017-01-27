@@ -117,11 +117,11 @@
         }
     }
 
-    function getCollectorWebResource(messageType, batched, onlyS3) {
+    function getCollectorWebResource(messageType, batched, s3AndKafka) {
         batched = batched || false;
         var base = omg.isProd() ? COLLECTOR_WEB_PROD : COLLECTOR_WEB_TEST;
-        if(onlyS3){
-            return base + '/' + messageType + '.json?stream=false&persist=true&batch=' + batched;
+        if(s3AndKafka){
+            return base + '/' + messageType + '.json?stream=true&persist=true&batch=' + batched;
         }
         else {
             return base + '/' + messageType + '.json?stream=true&persist=false&batch=' + batched;
