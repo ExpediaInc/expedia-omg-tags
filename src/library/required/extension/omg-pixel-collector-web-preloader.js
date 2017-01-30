@@ -55,7 +55,7 @@
     function  batchedCallbackHandlerForDataMapping(messageId){
         var tagLoggingConfig = {
             "stream":!omg.isProd(),
-            "persist":false
+            "persist":true
         }
         var collectorWebResourceURL = getCollectorWebResource(messageId, tagLoggingConfig);
         var items = dataMappingPixelBatchedPayload.splice(0, dataMappingPixelBatchedPayload.length);
