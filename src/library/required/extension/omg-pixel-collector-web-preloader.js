@@ -53,7 +53,11 @@
     };
 
     function  batchedCallbackHandlerForDataMapping(messageId){
-        var collectorWebResourceURL = getCollectorWebResource(messageId, true, true);
+        var tagLoggingConfig = {
+            "stream":!omg.isProd(),
+            "persist":true
+        }
+        var collectorWebResourceURL = getCollectorWebResource(messageId, tagLoggingConfig);
         var items = dataMappingPixelBatchedPayload.splice(0, dataMappingPixelBatchedPayload.length);
         if (items.length <= 0) {
             log.debug('No payload to publish to collector-web');
@@ -73,7 +77,11 @@
         });
     }
     function batchedCallbackHandler(messageId) {
-        var collectorWebResourceURL = getCollectorWebResource(messageId, true, false);
+        var tagLoggingConfig = {
+            "stream":true,
+            "persist":false
+        }
+        var collectorWebResourceURL = getCollectorWebResource(messageId, tagLoggingConfig);
         var items = tagPixelBatchedPayload.splice(0, tagPixelBatchedPayload.length);
         if (items.length <= 0) {
             log.debug('No payload to publish to collector-web');
@@ -117,15 +125,13 @@
         }
     }
 
-    function getCollectorWebResource(messageType, batched, onlyS3) {
-        batched = batched || false;
+    function getCollectorWebResource(messageType, tagLoggingConfig) {
         var base = omg.isProd() ? COLLECTOR_WEB_PROD : COLLECTOR_WEB_TEST;
-        if(onlyS3){
-            return base + '/' + messageType + '.json?stream=false&persist=true&batch=' + batched;
+        base += "/" + messageType + ".json?batch=true";
+        for (var key in tagLoggingConfig) {
+            base += "&" +key + '=' + tagLoggingConfig[key];
         }
-        else {
-            return base + '/' + messageType + '.json?stream=true&persist=false&batch=' + batched;
-        }
+        return base;
     }
 
     function createLogPixelPayload(tagInfo) {
