@@ -10,7 +10,7 @@ if(lobType == 'Hotel') {
 }
 else if(lobType == 'Flight') {
 	if(typeof utag_data['entity.checkout.flightOffer.flight.flightFareType.0'] != "undefined") {
-		if (utag_data['entity.checkout.flightOffer.flight.flightFareType.0'] == '28') {
+		if (utag_data['entity.checkout.flightOffer.flight.flightFareType.0'] == 'WHITE_LABEL') {
 			category = 'Opaque Air';
 		}
 		else {
