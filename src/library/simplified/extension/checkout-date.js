@@ -1,5 +1,6 @@
 
 b['checkOutDate'] = '';
+b['checkOutTimeStampUtc'] = '';
 if (utag.isHSR() && b['entity.hotels.search.hotelParameters.checkOutDate'])
 {
     b['checkOutDate'] = b['entity.hotels.search.hotelParameters.checkOutDate'];
@@ -131,10 +132,6 @@ else if (utag.isCruiseCO() && b['entity.checkout.cruise.isoFormatReturnDate'])
 {
     b['checkOutDate'] = b['entity.checkout.cruise.isoFormatReturnDate'];
 }
-else if (b['entity.tripDetails.hotelOffer.isoFormatCheckOutDate'])
-{
-    b['checkOutDate'] = b['entity.tripDetails.hotelOffer.isoFormatCheckOutDate'];
-}
 else if(utag.is3pp() && b['entity.checkout.hotel.checkOutDate']){
     b['checkOutDate'] = b['entity.checkout.hotel.checkOutDate'];
 }
@@ -192,6 +189,11 @@ else if (utag.isItinPage()){
     }
     if (b["entity.tripDetails.hotelOffer.isoFormatCheckOutDate"] != undefined) {
         b['checkOutDate'] = b["entity.tripDetails.hotelOffer.isoFormatCheckOutDate"];
+    }
+
+    //utc
+    if (b["entity.tripDetails.utcTripEndDate"] != undefined){
+        b['checkOutTimeStampUtc'] = b["entity.tripDetails.utcTripEndDate"];
     }
 }
 

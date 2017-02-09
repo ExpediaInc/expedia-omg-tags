@@ -5,8 +5,6 @@
  * Check-Out:   Flight, Packages
  */
 
-(function ()
-{
     var ONE_WAY = 'OneWay';
     var ROUND_TRIP = 'RoundTrip';
     var MULTI_DEST = 'MultiDest';
@@ -55,7 +53,9 @@
     {
         b['tripType'] = ROUND_TRIP;
     }
-    else if ((utag.isFRateDetails() || utag.isPRateDetails()) && b['entity.tripDetails.flightOffer.tripType'] != undefined){
+    else if (utag.isPRateDetails() && b['entity.tripDetails.flightOffer.tripType'] != undefined){
         b['tripType'] = getTripType(b['entity.tripDetails.flightOffer.tripType']);
     }
-})();
+    else if (utag.isFRateDetails() && b['entity.tripDetails.flightOffer.tripType'] != undefined){
+        b['tripType'] = b['entity.tripDetails.flightOffer.tripType']
+    }

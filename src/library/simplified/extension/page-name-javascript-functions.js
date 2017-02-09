@@ -437,7 +437,7 @@ window.utag.isCO = function()
 }
 
 window.utag.isItinPage = function(){
-    if(pageName.toLowerCase().indexOf("page.Itin.Details.Booked") > -1 ){
+    if(pageName.indexOf("page.Itin.Details.Booked") > -1 ){
         b["isItinPage"] = true;
         b["pageType"] = "Itinerary";
         return true;

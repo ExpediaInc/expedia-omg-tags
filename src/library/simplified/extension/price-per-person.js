@@ -14,6 +14,10 @@ else if((utag.isHCO()|| utag.isFCO() || utag.isPCO()|| utag.isLXCO() || utag.isM
         b['pricePerPerson'] = (b['checkout.cartTotal.amount'] / b['numberOfGuests']).toFixed(2);
     }
 }
+else if (utag.isFRateDetails() && (b['entity.flight.flight.avgPriceOfAdultAndSenior.amount'] || b['entity.flight.flight.avgPriceOfChildrenAndInfants.amount']))
+{
+    b['pricePerPerson'] = b['entity.flight.flight.avgPriceOfAdultAndSenior.amount'] + "|" + b['entity.flight.flight.avgPriceOfChildrenAndInfants.amount'];
+}
 
 /** old
  utag_data['pricePerPerson'] = '';
