@@ -1,4 +1,6 @@
-// Moveable Ink Behavioral and Conversion - Custom
+//~~tv:20010.20140827
+//~~tc: Tealium Custom Container - Naver Conversion
+
 //tealium universal tag - utag.sender.custom_container ut4.0.##UTVERSION##, Copyright ##UTYEAR## Tealium.com Inc. All Rights Reserved.
 try {
   (function (id, loader) {
@@ -23,17 +25,12 @@ try {
         var c, d, e, f, i;
 
         u.data = {
-          "base_url" : "",
-          "promo": "", 
-          "prodname": "", 
-          "revenue": "", 
-          "sku": "", 
-          "price": "",
-          "quantity": "",
-          "oid": "",
-    "description": ""
+           "type": "",
+           "value": "",
+           "checkout": "",
+           "account_id": "", 
+           "base_url" : "//wcs.naver.net/wcslog.js" 
         };
-
 
         ##UTEXTEND##
 
@@ -46,51 +43,36 @@ try {
           }
         }
 
-      u.data.revenue = u.data.revenue || b._csubtotal || "";
-      u.data.sku = u.data.sku || "";
-      u.data.price = u.data.price || b._cprice || "";
-      u.data.prodname = u.data.prodname || b._cprodname || "";
-      u.data.quantity = u.data.quantity || b._cquan || "";
-      u.data.oid = u.data.oid || b._corder || "";
-      u.data.promo = u.data.promo || b._cpromo || "";
-      u.data.description = u.data.description || "";
+        u.loader_cb = function () {
+          u.initialized = true;
 
-            
-      (function(m,o,v,a,b,l,e) {
-       m['MovableInkTrack'] = b;
-       l = o.createElement(v);
-       e = o.getElementsByTagName(v)[0];
-       l.type = 'text/javascript'; l.async = true;
-       l.src = '//' + a + '/p/js/1.js';
-       m[b] = m[b] || function() { (m[b].q=m[b].q||[]).push(arguments); };
-       e.parentNode.insertBefore(l, e);
-      })(window, document, 'script', 'bbb5krzc.micpn.com', 'mitr');
-          
-       
-          
-       if (typeof u.data.oid !== 'undefined' && u.data.oid !== '') {
-              if (typeof u.data.promo !== 'undefined' && u.data.promo !== '') {
-                  mitr('addPromo', {
-                      'code': u.data.promo,
-                      'description': u.data.description
-                  });
-              }
-              if (typeof u.data.price !== 'undefined' && u.data.price !== '') {
-                  //for (var i = 0; i < u.data.sku.length; i++) {
-                      mitr('addProduct', {
-                          'sku': u.data.sku,
-                          'name': u.data.prodname,
-                          'price': u.data.price,
-                          'quantity': u.data.quantity
-                      });
-                  //}
-              }
-              mitr('send', 'conversion', {
-                  'revenue': u.data.revenue,
-                  'identifier': u.data.oid
-              });
+          u.data.account_id = u.data.account_id || "s_3c284f236edf";
+          u.data.checkout = u.data.checkout || "";
+          u.data.type = u.data.type || "1";
+          u.data.value = u.data.value ? u.data.value.toString() : "10";
+
+          if(u.data.checkout) {
+            var _nasa={};
+            _nasa["cnv"] = wcs.cnv(u.data.type,u.data.value);
+          } else {
+            if (!wcs_add) var wcs_add={};
+            wcs_add["wa"] = u.data.account_id;
+            if (!_nasa) var _nasa={};
+            wcs.inflow();
+            wcs_do(_nasa);
           }
-          
+
+        };
+
+
+          if (!u.initialized) {
+            u.loader({"type" : "script", "src" : u.data.base_url, "cb" : u.loader_cb, "loc" : "script", "id" : 'utag_##UTID##' });
+          } else {
+            u.loader_cb();
+          }
+
+
+        //##UTENABLEDEBUG##utag.DB("send:##UTID##:COMPLETE");
       }
     };
     utag.o[loader].loader.LOAD(id);
@@ -99,3 +81,4 @@ try {
   utag.DB(error);
 }
 //end tealium universal tag
+
