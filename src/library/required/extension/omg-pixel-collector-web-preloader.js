@@ -80,7 +80,8 @@
     function  batchedCallbackHandlerForDataMapping(messageId){
         var tagLoggingConfig = {
             "stream":!omg.isProd(),
-            "persist":true
+            "persist":true,
+            "batch":true
         }
         var collectorWebResourceURL = getCollectorWebResource(messageId, tagLoggingConfig);
         var items = dataMappingPixelBatchedPayload.splice(0, dataMappingPixelBatchedPayload.length);
@@ -104,7 +105,8 @@
     function batchedCallbackHandler(messageId) {
         var tagLoggingConfig = {
             "stream":true,
-            "persist":false
+            "persist":false,
+            "batch":true
         }
         var collectorWebResourceURL = getCollectorWebResource(messageId, tagLoggingConfig);
         var items = tagPixelBatchedPayload.splice(0, tagPixelBatchedPayload.length);
@@ -152,9 +154,9 @@
 
     function getCollectorWebResource(messageType, tagLoggingConfig) {
         var base = omg.isProd() ? COLLECTOR_WEB_PROD : COLLECTOR_WEB_TEST;
-        base += "/" + messageType + ".json?batch=true";
+        base += "/" + messageType + ".json?";
         for (var key in tagLoggingConfig) {
-            base += "&" +key + '=' + tagLoggingConfig[key];
+            base += key + '=' + tagLoggingConfig[key] + "&";
         }
         return base;
     }
