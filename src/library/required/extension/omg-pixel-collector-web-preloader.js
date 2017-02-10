@@ -53,7 +53,7 @@
     };
     
     omg.udo = {
-        logFlatternUdo: function() {
+        logFlattenedUdo: function() {
             var tagLoggingConfig = {
                 "stream":!omg.isProd(),
                 "persist":true
