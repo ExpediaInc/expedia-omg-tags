@@ -51,6 +51,31 @@
             addTagPixelPayload(TAG_LOGGING, tagInfo, dataMappingPixelBatchedPayload);
         }
     };
+    
+    omg.udo = {
+        logFlatternUdo: function() {
+            var tagLoggingConfig = {
+                "stream":!omg.isProd(),
+                "persist":true
+            }
+            var collectorWebResourceURL = getCollectorWebResource("omg-udo", tagLoggingConfig);
+            if(window.utag_data) {
+                var payload = JSON.stringify(utag_data);
+                $.ajax({
+                    type: "POST",
+                    url: collectorWebResourceURL,
+                    data: payload,
+                    contentType: "text/plain; charset=utf-8",
+                    crossDomain: true
+                }).done(function () {
+                    // log.debug('post to collector-web success. args=', arguments);
+                }).fail(function () {
+                    log.warn('post to collector-web failed. args=', arguments);
+                });
+            }
+        }
+        
+    };
 
     function  batchedCallbackHandlerForDataMapping(messageId){
         var tagLoggingConfig = {
