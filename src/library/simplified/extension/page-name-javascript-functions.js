@@ -466,7 +466,7 @@ window.utag.isLXI = function(){
 window.utag.isLXPymt = function(){
     if(pageName.indexOf("page.LX.Checkout.Payment") > -1 ){
         b["isLXPymt"] = true;
-        b["pageType"] = "payment";
+        b["pageType"] = "Payment";
         return true ;
     }
     return false;
