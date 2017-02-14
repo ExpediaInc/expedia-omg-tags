@@ -463,6 +463,15 @@ window.utag.isLXI = function(){
     return false;
 }
 
+window.utag.isLXPymt = function(){
+    if(pageName.indexOf("page.LX.Checkout.Payment") > -1 ){
+        b["isLXPymt"] = true;
+        b["pageType"] = "payment";
+        return true ;
+    }
+    return false;
+}
+
 window.utag.isHomePage = function(){
     if(pageName.indexOf("Homepage") > -1 ){
         b["isHomePage"] = true;

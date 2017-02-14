@@ -107,7 +107,7 @@
                 'entity.checkout.flightOffer.travelersInfo.numberOfSeniors');
         }
     }
-    else if (utag.isLXCO())
+    else if (utag.isLXCO() || utag.isLXPymt())
     {
         if (b.entity.checkout.activity.travelerInfo.numberOfAdults
             || b.entity.checkout.activity.travelerInfo.numberOfSeniors
