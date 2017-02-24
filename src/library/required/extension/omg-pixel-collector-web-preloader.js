@@ -51,11 +51,37 @@
             addTagPixelPayload(TAG_LOGGING, tagInfo, dataMappingPixelBatchedPayload);
         }
     };
+    
+    omg.udo = {
+        logFlattenedUdo: function() {
+            var tagLoggingConfig = {
+                "stream":!omg.isProd(),
+                "persist":true
+            }
+            var collectorWebResourceURL = getCollectorWebResource("omg-udo", tagLoggingConfig);
+            if(window.utag_data) {
+                var payload = JSON.stringify(utag_data);
+                $.ajax({
+                    type: "POST",
+                    url: collectorWebResourceURL,
+                    data: payload,
+                    contentType: "text/plain; charset=utf-8",
+                    crossDomain: true
+                }).done(function () {
+                    // log.debug('post to collector-web success. args=', arguments);
+                }).fail(function () {
+                    log.warn('post to collector-web failed. args=', arguments);
+                });
+            }
+        }
+        
+    };
 
     function  batchedCallbackHandlerForDataMapping(messageId){
         var tagLoggingConfig = {
             "stream":!omg.isProd(),
-            "persist":true
+            "persist":true,
+            "batch":true
         }
         var collectorWebResourceURL = getCollectorWebResource(messageId, tagLoggingConfig);
         var items = dataMappingPixelBatchedPayload.splice(0, dataMappingPixelBatchedPayload.length);
@@ -79,7 +105,8 @@
     function batchedCallbackHandler(messageId) {
         var tagLoggingConfig = {
             "stream":true,
-            "persist":false
+            "persist":false,
+            "batch":true
         }
         var collectorWebResourceURL = getCollectorWebResource(messageId, tagLoggingConfig);
         var items = tagPixelBatchedPayload.splice(0, tagPixelBatchedPayload.length);
@@ -127,20 +154,23 @@
 
     function getCollectorWebResource(messageType, tagLoggingConfig) {
         var base = omg.isProd() ? COLLECTOR_WEB_PROD : COLLECTOR_WEB_TEST;
-        base += "/" + messageType + ".json?batch=true";
+        base += "/" + messageType + ".json?";
         for (var key in tagLoggingConfig) {
-            base += "&" +key + '=' + tagLoggingConfig[key];
+            base += key + '=' + tagLoggingConfig[key] + "&";
         }
         return base;
     }
 
     function createLogPixelPayload(tagInfo) {
-        var siteId, siteName;
+        var siteId, siteName, siteBrand;
         if (b.context && b.context.site) {
             siteId = b.context.site.siteId || -1;
         }
         if (b.context && b.context.site) {
             siteName = b.context.site.siteName;
+        }
+        if (b.SiteBrand) {
+            siteBrand = b.SiteBrand;
         }
 
         var pageName, lob, xlob, funnelLocation;
@@ -169,7 +199,8 @@
             },
             "site": {
                 "id": siteId,
-                "name": siteName
+                "name": siteName,
+                "brand": siteBrand
             },
             "page": {
                 "name": pageName,

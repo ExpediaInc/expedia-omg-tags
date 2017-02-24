@@ -208,7 +208,7 @@ if(b.siteId && utag.isHSR() ){
    case 70125:
       b['doubleclick.src.hsr'] = "4598511";
       b['doubleclick.type.hsr'] = "apaca0";
-      b['doubleclick.cat.hsr'] = "apaca0";
+      b['doubleclick.cat.hsr'] = "apaca00";
       break;
    case 70129:
       b['doubleclick.src.hsr'] = "4600929";

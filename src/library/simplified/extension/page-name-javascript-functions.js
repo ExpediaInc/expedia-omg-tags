@@ -455,9 +455,18 @@ window.utag.isLXS = function(){
 }
 
 window.utag.isLXI = function(){
-    if(pageName.indexOf("page.LX.Infosite.Information") > -1 ){
+    if(pageName.indexOf("page.LX.Infosite.Information") > -1  || pageName.indexOf('page.LX-Infosite') > -1){
         b["isLXI"] = true;
         b["pageType"] = "Infosite";
+        return true ;
+    }
+    return false;
+}
+
+window.utag.isLXPymt = function(){
+    if(pageName.indexOf("page.LX.Checkout.Payment") > -1 ){
+        b["isLXPymt"] = true;
+        b["pageType"] = "Payment";
         return true ;
     }
     return false;
