@@ -168,4 +168,14 @@ window.crto_partners = [{
     id: "15315",
     domain: "www.orbitz.com",
     lob: "HOTEL"
+}, {
+    name: "BJS Travel Hotel Us",
+    id: "4738",
+    domain: "getaway.bjs.com",
+    lob: "HOTEL"
+}, {
+    name: "BJS Travel Packages US",
+    id: "4739",
+    domain: "getaway.bjs.com",
+    lob: "PACKAGE"
 }];

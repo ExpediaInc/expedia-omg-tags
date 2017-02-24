@@ -115,8 +115,9 @@ try {
 
 
                       // Set Partner Id 
-                      if (typeof b['ut.profile'] != "undefined" &&
-                          b['ut.profile'] == "partnerships") {
+                    if (typeof b['ut.profile'] != "undefined" &&
+                     b['ut.profile'] == "partnerships" &&
+                       b['ut.domain'].indexOf('bjs') < 0) {
 
                           // Parse Homepage and set Partner ID
                           window.parseHomepage = function() {
