@@ -8,6 +8,7 @@
      * @deprecated - TAG_LOGGING - Will be removed on a future story in favor of omgpixel
      */
     var TAG_LOGGING = 'omgmarketingpixel';
+    var pixelfired = {};
 
     if (!('object' == typeof omg && 'function' == typeof omg.isJQueryPresent && omg.isJQueryPresent())) {
         console.warn('omg available?', omg, 'jquery available?', omg.isJQueryPresent());
@@ -36,6 +37,7 @@
 
     omg.pixel = {
         fireTagPixel: function (tagInfo, optionalMappingHandler) {
+            dataForTagAlerting(tagInfo, pixelfired)
             if (!isEnabled()) {
                 log.info('omgpixel fire is disabled, tag=', tagInfo);
                 return;
@@ -177,6 +179,13 @@
             base += key + '=' + tagLoggingConfig[key] + "&";
         }
         return base;
+    }
+    
+    function dataForTagAlerting(tagInfo, pixelfired){
+        if(typeof tagInfo.name !== "undefined" && window.utag_data){
+            pixelfired[tagInfo.name.replace("-","")]=true;
+            window.utag_data.pixelfired = pixelfired;
+        }   
     }
 
     /**
