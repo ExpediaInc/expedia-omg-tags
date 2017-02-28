@@ -73,7 +73,7 @@ else if (utag.isPCO() && b['entity.checkout.hotel.isoCheckOutDate'])
 {
     b['checkOutDate'] = b['entity.checkout.hotel.isoCheckOutDate'];
 }
-else if (utag.isCarSR() && typeof b["entity.carSearch.searchCriteria.isoFormatDropOffDate"])
+else if ((utag.isCarSR() || utag.isPCarSearch()) && typeof b["entity.carSearch.searchCriteria.isoFormatDropOffDate"])
 {
     b['checkOutDate'] = b.entity.carSearch.searchCriteria.isoFormatDropOffDate.split('T')[0];
 }
@@ -196,7 +196,9 @@ else if (utag.isItinPage()){
         b['checkOutTimeStampUtc'] = b["entity.tripDetails.utcTripEndDate"];
     }
 }
-
+else if (utag.isPCF() && b['entity.packageSearch.packageSearchParameters.isoFormatReturnDate']) {
+    b['checkOutDate'] = b['entity.packageSearch.packageSearchParameters.isoFormatReturnDate'];
+}
 if(b["checkOutDate"] != '')
 {
     b["checkOutDate"] = b["checkOutDate"].split("T")[0];

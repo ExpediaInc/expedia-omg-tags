@@ -7,7 +7,7 @@ else if((utag.isHIS() || utag.isPIS()) && typeof b["entity.hotels.listOfHotels.0
 else if((utag.isHCO() || utag.isPCO()) && b["entity.checkout.hotel.regionId"] != "undefined"){
     b["regionId"] = b["entity.checkout.hotel.regionId"];
 }
-else if(utag.isCarSR() && typeof b["entity.carSearch.searchCriteria.pickUpLocation.regionId"] != "undefined"){
+else if(utag.isCarSR() || utag.isPCarSearch() && typeof b["entity.carSearch.searchCriteria.pickUpLocation.regionId"] != "undefined"){
     b["regionId"] = b["entity.carSearch.searchCriteria.pickUpLocation.regionId"];
 }
 else if(utag.isCarCO()){
@@ -24,7 +24,7 @@ else if(utag.isCarCO()){
 else if (utag.isPSR() && b.entity.packageFHSearch != undefined && b.entity.packageFHSearch.packageFHSearchParameters.destinationRegionId != undefined) {
     b['regionId'] = b['entity.packageFHSearch.packageFHSearchParameters.destinationRegionId'];
 }
-else if((utag.isPSR() || utag.isPSR_HC() || utag.isPSR_FC() || utag.isPSR_FH_Responsive() || utag.isPIS_FH() || utag.isPRateDetails()) && b["entity.packageSearch.packageSearchParameters.destinationRegionId"] != undefined){
+else if((utag.isPSR() || utag.isPSR_HC() || utag.isPSR_FC() || utag.isPSR_FH_Responsive() || utag.isPIS_FH() || utag.isPRateDetails() || utag.isPCF()) && b["entity.packageSearch.packageSearchParameters.destinationRegionId"] != undefined){
     b["regionId"] = b["entity.packageSearch.packageSearchParameters.destinationRegionId"];
 }
 else if (utag.isMCO())

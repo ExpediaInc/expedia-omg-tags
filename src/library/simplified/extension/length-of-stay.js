@@ -92,7 +92,7 @@
         checkOutISOText = b['entity.checkout.flightOffer.flight.legs.0.isoFormatArrivalTimestamp'];
         b['lengthOfStay'] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);
     }
-    else if(utag.isCarSR() && b['entity.carSearch.searchCriteria.isoFormatPickUpDate'] && b['entity.carSearch.searchCriteria.isoFormatDropOffDate'] ){
+    else if((utag.isCarSR() || utag.isPCarSearch()) && b['entity.carSearch.searchCriteria.isoFormatPickUpDate'] && b['entity.carSearch.searchCriteria.isoFormatDropOffDate'] ){
         checkInISOText = b['entity.carSearch.searchCriteria.isoFormatPickUpDate'];
         checkOutISOText = b['entity.carSearch.searchCriteria.isoFormatDropOffDate'];
         b['lengthOfStay'] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);
@@ -138,8 +138,12 @@
             b["lengthOfStay"] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);
         }
     }
-
-
+    else if (utag.isPCF() && b['entity.packageSearch.packageSearchParameters.isoFormatDepartureDate']
+            && b['entity.packageSearch.packageSearchParameters.isoFormatReturnDate']) {
+            checkInISOText = b['entity.packageSearch.packageSearchParameters.isoFormatDepartureDate'];
+            checkOutISOText = b['entity.packageSearch.packageSearchParameters.isoFormatReturnDate'];
+        b['lengthOfStay'] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);
+    }
     function getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText)
     {
         if ('string' == typeof checkInISOText && 'string' == typeof checkOutISOText
@@ -166,172 +170,3 @@
     }
 })();
 
-/** old
- (function ()
- {
-     utag_data['lengthOfStay'] = '';
-     if (utag.isHSR() && utag_data['entity.hotels.search.hotelParameters.lengthOfStay'] != undefined)
-     {
-         utag_data['lengthOfStay'] = utag_data['entity.hotels.search.hotelParameters.lengthOfStay'];
-     }
-     else if (utag.isHIS() && utag_data['entity.hotels.listOfHotels.0.lengthOfStay'] != undefined)
-     {
-         utag_data['lengthOfStay'] = utag_data['entity.hotels.listOfHotels.0.lengthOfStay'];
-     }
-     else if (utag.isHCO() && utag_data['entity.checkout.hotel.lengthOfStay'] != undefined)
-     {
-         utag_data['lengthOfStay'] = utag_data['entity.checkout.hotel.lengthOfStay'];
-     }
-     else if (utag.isPSR() || utag.isPIS_FH())
-     {
-         var checkInISOText = '';
-         var checkOutISOText = '';
-         if (true == utag_data['entity.packageFHSearch.packageFHSearchParameters.packageHotelSearchParameters.partialStay'])
-         {
-             // FH/FHC (Partial Stay)
-             checkInISOText = utag_data['entity.packageFHSearch.packageFHSearchParameters.packageHotelSearchParameters.checkInDateForPartialStay'];
-             checkOutISOText = utag_data['entity.packageFHSearch.packageFHSearchParameters.packageHotelSearchParameters.checkOutDateForPartialStay'];
-         }
-         else if (utag_data['entity.packageFHSearch.packageFHSearchParameters.departureDate']
-             && utag_data['entity.packageFHSearch.packageFHSearchParameters.returnDate'])
-         {
-             // FH/FHC
-             checkInISOText = utag_data['entity.packageFHSearch.packageFHSearchParameters.departureDate'];
-             checkOutISOText = utag_data['entity.packageFHSearch.packageFHSearchParameters.returnDate'];
-         }
-         else if (utag_data['entity.packageSearch.packageSearchParameters.isoFormatDepartureDate']
-             && utag_data['entity.packageSearch.packageSearchParameters.isoFormatReturnDate'])
-         {
-             // FC/HC
-             checkInISOText = utag_data['entity.packageSearch.packageSearchParameters.isoFormatDepartureDate'];
-             checkOutISOText = utag_data['entity.packageSearch.packageSearchParameters.isoFormatReturnDate'];
-         }
-         utag_data['lengthOfStay'] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);
-     }
-     else if (utag.isPIS())
-     {
-         if (utag_data['entity.hotels.listOfHotels.0.lengthOfStay'] != undefined)
-         {
-             // Package FH
-             utag_data['lengthOfStay'] = utag_data['entity.hotels.listOfHotels.0.lengthOfStay'];
-         }
-         else if ('boolean' == typeof utag_data['entity.packageSearch.packageSearchParameters.packageHotelSearchParameters.partialStay'])
-         {
-             var checkInISOText = '';
-             var checkOutISOText = '';
-             // Package FHC  - Hotel Info Site (contains partial Stay)
-             // Package HC   - No option for partial stay
-             if (true === utag_data['entity.packageSearch.packageSearchParameters.packageHotelSearchParameters.partialStay'])
-             {
-                 checkInISOText = utag_data['entity.packageSearch.packageSearchParameters.packageHotelSearchParameters.isoFormatCheckInDateForPartialStay'];
-                 checkOutISOText = utag_data['entity.packageSearch.packageSearchParameters.packageHotelSearchParameters.isoFormatCheckOutDateForPartialStay'];
-             }
-             else
-             {
-                 checkInISOText = utag_data['entity.packageSearch.packageSearchParameters.isoFormatDepartureDate'];
-                 checkOutISOText = utag_data['entity.packageSearch.packageSearchParameters.isoFormatReturnDate'];
-             }
-             utag_data['lengthOfStay'] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);
-         }
-     }
-     else if (utag.isPCO() && utag_data['entity.checkout.hotel.lengthOfStay'])
-     {
-         if (utag_data['entity.checkout.hotel.lengthOfStay'])
-         {
-             utag_data['lengthOfStay'] = utag_data['entity.checkout.hotel.lengthOfStay'];
-         }
-     }
-   else if(utag.isLXS() && utag_data['entity.activities.activitySearchParameters.isoFormatStartDate'] && utag_data['entity.activities.activitySearchParameters.isoFormatEndDate'] ){
-     checkInISOText = utag_data['entity.activities.activitySearchParameters.isoFormatStartDate'];
-     checkOutISOText = utag_data['entity.activities.activitySearchParameters.isoFormatEndDate'];
-     utag_data['lengthOfStay'] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);
-   }
-   else if(utag.isLXCO() && utag_data['entity.checkout.activities.0.activityDetail.isoFormatStartDate'] && utag_data['entity.checkout.activities.0.activityDetail.isoFormatEndDate'] ){
-     checkInISOText = utag_data['entity.checkout.activities.0.activityDetail.isoFormatStartDate'];
-     checkOutISOText = utag_data['entity.checkout.activities.0.activityDetail.isoFormatEndDate'];
-     utag_data['lengthOfStay'] = parseInt(getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText));
-   }
-   else if(utag.isFSR() && utag_data['entity.flightSearch.searchParameters.isoFormatDepartureDate'] && utag_data['entity.flightSearch.searchParameters.isoFormatReturnDate'] ){
-     checkInISOText = utag_data['entity.flightSearch.searchParameters.isoFormatDepartureDate'];
-     checkOutISOText = utag_data['entity.flightSearch.searchParameters.isoFormatReturnDate'];
-     utag_data['lengthOfStay'] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);
-   }
-   else if(utag.isFCO() && utag_data['entity.checkout.flightOffer.flight.legs.0.isoFormatDepartureTimestamp'] != undefined && utag_data['entity.checkout.flightOffer.flight.legs.0.isoFormatArrivalTimestamp'] != undefined){
-     checkInISOText = utag_data['entity.checkout.flightOffer.flight.legs.0.isoFormatDepartureTimestamp'];
-     checkOutISOText = utag_data['entity.checkout.flightOffer.flight.legs.0.isoFormatArrivalTimestamp'];
-     utag_data['lengthOfStay'] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);
-   }
-   else if(utag.isCarSR() && utag_data['entity.carSearch.searchCriteria.isoFormatPickUpDate'] && utag_data['entity.carSearch.searchCriteria.isoFormatDropOffDate'] ){
-     checkInISOText = utag_data['entity.carSearch.searchCriteria.isoFormatPickUpDate'];
-     checkOutISOText = utag_data['entity.carSearch.searchCriteria.isoFormatDropOffDate'];
-     utag_data['lengthOfStay'] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);
-   }
-     else if (utag.isCarCO() || utag.isCarPymt())
-     {
-         var checkInISOText = utag_data['entity.checkout.car.isoFormatPickUpDate'];
-         var checkOutISOText = utag_data['entity.checkout.car.isoFormatDropOffDate'];
-         utag_data['lengthOfStay'] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);
-     }
-     else if (utag.isPRateDetails())
-     {
-         var numHotelNights = utag_data['entity.tripDetails.hotelOffer.numHotelNights'];
-         if (!isNaN(numHotelNights) && numHotelNights > 0)
-         {
-             utag_data['lengthOfStay'] = numHotelNights + 1;
-         }
-     }
-     else if (utag.isCruiseCO() && utag_data['entity.checkout.cruise.duration'])
-     {
-         utag_data['lengthOfStay'] = utag_data['entity.checkout.cruise.duration'];
-     }
-     else if (utag.isCruiseSR() && !isNaN(utag_data['qp.min-length']))
-     {
-         utag_data['lengthOfStay'] = utag_data['qp.min-length'];
-         if (!isNaN(utag_data['qp.max-length']))
-         {
-             utag_data['lengthOfStay'] = utag_data['lengthOfStay'] + '|' + utag_data['qp.max-length'];
-         }
-     }
-   else if (utag.isMCO()) {
-     if (utag_data["entity.checkout.hotels.0.lengthOfStay"] != undefined) {
-       utag_data["lengthOfStay"] = utag_data["entity.checkout.hotels.0.lengthOfStay"];
-     }
-     else if (utag_data["entity.checkout.cars.0.isoFormatPickUpDate"] != undefined) {
-       var checkInISOText = utag_data["entity.checkout.cars.0.isoFormatPickUpDate"];
-       var checkOutISOText = utag_data["entity.checkout.cars.0.isoFormatDropOffDate"];
-       utag_data["lengthOfStay"] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);
-     }
-     else if (utag_data["entity.checkout.flightOffers.0.flight.legs.0.isoFormatDepartureTimestamp"] != undefined) {
-       var checkInISOText = utag_data["entity.checkout.flightOffers.0.flight.legs.0.isoFormatDepartureTimestamp"];
-       var checkOutISOText = utag_data["entity.checkout.flightOffers.0.flight.legs.0.isoFormatArrivalTimestamp"];
-       utag_data["lengthOfStay"] = getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText);
-     }
-   }
-
-
-     function getLengthOfStayFromIsoDates(checkInISOText, checkOutISOText)
-     {
-         if ('string' == typeof checkInISOText && 'string' == typeof checkOutISOText
-             && checkInISOText.trim().length > 0 && checkOutISOText.trim().length > 0)
-         {
-             return getLengthOfStay(new Date(checkInISOText), new Date(checkOutISOText));
-         }
-     }
-
-     function getLengthOfStay(fromDate, toDate)
-     {
-         if (fromDate && fromDate.getTime && toDate && toDate.getTime)
-         {
-             var diff = toDate.getTime() - fromDate.getTime()
-             var lengthOfStay = diff / (1000 * 60 * 60 * 24);
-             if (lengthOfStay > 0)
-             {
-                 // utag.DB('[lengthOfStay]: checkIn=' + fromDate.toISOString() + ' checkOut=' + toDate.toISOString() + ' lengthOfStay=' + lengthOfStay + ' lengthOfStay(fixed)=' + lengthOfStay.toFixed(0));
-                 return lengthOfStay.toFixed(0);
-             }
-         }
-
-         return '';
-     }
- })();
- **/

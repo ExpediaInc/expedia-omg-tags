@@ -26,25 +26,9 @@ else if(utag.isMCO()) {
         b["dest"] = b["entity.checkout.cars.0.dropOffLocation.locationCode"];
     }
 }
-
-/** old
- utag_data["dest"] = "";
- if(utag.isFCO() || utag.isPCO()){
-  utag_data["dest"] = utag_data["destinationAirportCode"] ? utag_data["destinationAirportCode"] : "";
-}
- else if(utag.isHCO()){
-  utag_data["dest"] = utag_data["entity.checkout.hotel.hotelCityName"] ? utag_data["entity.checkout.hotel.hotelCityName"] : "";
-}
- else if (utag.isHSR()) {
-  utag_data["dest"] = utag_data["entity.hotels.search.hotelParameters.regionId"] ? utag_data["entity.hotels.search.hotelParameters.regionId"] : "";
-}
- else if(utag.isCarCO() && typeof utag_data["entity.checkout.car.dropOffLocation.locationCode"] != "undefined"){
-  utag_data["dest"] = utag_data["entity.checkout.car.dropOffLocation.locationCode"];
-}
- else if(utag.isCarCO() && utag_data.entity.tripDetails != undefined){
-  utag_data["dest"] = utag_data["entity.tripDetails.carInfo.dropOffLocation.locationCode"] ? utag_data["entity.checkout.hotel.hotelCityName"] : "";;
-}
- else if(utag.isLXCO()){
-  utag_data["dest"] = utag_data["entity.checkout.activity.activityDetail.destination"] ? utag_data["entity.checkout.activity.activityDetail.destination"] : "";
-}
- **/
+else if(utag.isPCF() || utag.isPSR_FC() && b["destinationAirportCode"]) {
+    b['dest'] = b['destinationAirportCode'];
+ }
+else if (utag.isPCarSearch() && b['entity.carSearch.searchCriteria.dropOffLocation.locationCode']) {
+    b['dest'] = b['entity.carSearch.searchCriteria.dropOffLocation.locationCode'];
+ }

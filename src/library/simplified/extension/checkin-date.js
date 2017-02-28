@@ -94,7 +94,7 @@ else if (utag.isFRateDetails() && b.entity.tripDetails.flightOffer.flight.legs !
 {
     b["checkInDate"] = b["entity.tripDetails.flightOffer.flight.legs.0.isoFormatDepartureTimestamp"];
 }
-else if(utag.isCarSR() && b['entity.carSearch.searchCriteria.isoFormatPickUpDate'] != undefined){
+else if((utag.isCarSR() || utag.isPCarSearch()) && b['entity.carSearch.searchCriteria.isoFormatPickUpDate'] != undefined){
     b['checkInDate'] =  b['entity.carSearch.searchCriteria.isoFormatPickUpDate'];
 }
 else if(utag.isFCO() && b['entity.checkout.flightOffer.flight.legs.0.isoFormatDepartureTimestamp'] != undefined)
@@ -165,6 +165,9 @@ else if (utag.isItinPage()){
     if (b["entity.tripDetails.utcTripStartDate"] != undefined){
         b['checkInTimeStampUtc'] = b["entity.tripDetails.utcTripStartDate"];
     }
+}
+else if (utag.isPCF() && b['entity.packageSearch.packageSearchParameters.isoFormatDepartureDate']) {
+    b['checkInDate'] = b['entity.packageSearch.packageSearchParameters.isoFormatDepartureDate'];
 }
 if(b["checkInDate"] != '')
 {
