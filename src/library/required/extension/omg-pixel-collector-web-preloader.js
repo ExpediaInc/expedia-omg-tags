@@ -37,7 +37,7 @@
 
     omg.pixel = {
         fireTagPixel: function (tagInfo, optionalMappingHandler) {
-            dataForTagAlerting(tagInfo, pixelfired)
+            dataForTagAlerting(tagInfo, pixelfired);
             if (!isEnabled()) {
                 log.info('omgpixel fire is disabled, tag=', tagInfo);
                 return;
@@ -183,7 +183,7 @@
     
     function dataForTagAlerting(tagInfo, pixelfired){
         if(typeof tagInfo.name !== "undefined" && window.utag_data){
-            pixelfired[tagInfo.name.replace("-","")]=true;
+            pixelfired[tagInfo.name.split("-").join("")]=true;
             window.utag_data.pixelfired = pixelfired;
         }   
     }
