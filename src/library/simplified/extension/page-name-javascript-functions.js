@@ -418,7 +418,7 @@ window.utag.isPCO_Mobile = function(){
 }
 
 window.utag.isLXCO = function(){
-    if(pageName.indexOf("page.LX.Checkout.Confirmation") > -1 ){
+    if(pageName.indexOf("page.LX.Checkout.Confirmation") > -1){
         b["isLXCO"] = true;
         b["pageType"] = "Confirmation";
         return true ;
