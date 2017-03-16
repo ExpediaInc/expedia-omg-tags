@@ -14,18 +14,18 @@ For the remainder of this document the tealium javascript extension or customize
 ## Project Directory Structure
 
 ### Library Extensions and Tags
-Required extensions are under src/library/required/extension
-Simplified extensions are under src/library/simplified/extension
-Simplified tags are under src/library/simplified/tag
+- Required extensions are under src/library/required/extension
+- Simplified extensions are under src/library/simplified/extension
+- Simplified tags are under src/library/simplified/tag
 
-###Profile Extensions and Tags
-Profile extensions should be under src/profile/[profile-name]/extension
-Profile Tags tags under src/profile/[profile-name]/tag
-Create missing folders as needed.
+### Profile Extensions and Tags
+- Profile extensions should be under src/profile/[profile-name]/extension
+- Profile Tags tags under src/profile/[profile-name]/tag
+- Create missing folders as needed.
 
 ## General Guidelines
 
-###Naming
+### Naming
 
 Try to keep the name of the tag and extension similar to the javascript file name, i.e. “Check-In Date” extension is stored in checkin-date.js
 Tag specific extensions should be prefixed, i.e. “PHG Supplier” / phg-supplier.js
