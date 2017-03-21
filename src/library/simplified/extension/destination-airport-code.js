@@ -34,3 +34,9 @@ else if (utag.isCarSR() && b['entity.carSearch.carOffers.0.pickUpLocation.locati
 else if (utag.isMCO() && b['entity.checkout.flightOffers.0.flight.legs.0.arrivalAirportCode']) {
     b['destinationAirportCode'] = b['entity.checkout.flightOffers.0.flight.legs.0.arrivalAirportCode'];
 }
+else if ((utag.isPCF() || utag.isPSR_FC()) && b['entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirport']) {
+    b['destinationAirportCode'] = b['entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirport'];
+}
+else if (utag.isPCarSearch() && b['entity.carSearch.searchCriteria.pickUpLocation.locationCode']) {
+    b['destinationAirportCode'] = b['entity.carSearch.searchCriteria.pickUpLocation.locationCode'];
+ }

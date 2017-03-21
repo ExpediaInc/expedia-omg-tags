@@ -22,10 +22,10 @@ else if (utag.isCruiseSR() && b.entity && b.entity.cruiseSearch && b.entity.crui
 {
     b['origin'] = b.entity.cruiseSearch.cruiseSearchCriteria.embarkationPorts.join('|');
 }
-else if (utag.isCarSR() && b['entity.carSearch.searchCriteria.pickUpLocation.locationCode'] != undefined){
+else if ((utag.isCarSR() || utag.isPCarSearch()) && b['entity.carSearch.searchCriteria.pickUpLocation.locationCode'] != undefined){
     b['origin'] = b['entity.carSearch.searchCriteria.pickUpLocation.locationCode'];
 }
-else if (utag.isFSR()){
+else if (utag.isFSR() || utag.isPCF()){
     b['origin'] = b['entity.flightSearch.searchParameters.departureAirportCityState'];
 }
 else if (utag.isPSR()){
@@ -42,50 +42,3 @@ else if (utag.isMCO()) {
         b['origin'] = b['entity.checkout.cars.0.pickUpLocation.locationCode'];
     }
 }
-
-/** old
- utag_data['origin'] = '';
- if(utag.isFCO() || utag.isPCO()){
-    utag_data['origin'] = utag_data['originAirportCode'];
-}
- else if(utag.isHCO()){
-    utag_data['origin'] = utag_data['entity.checkout.hotel.cityCode'];
-}
- else if(utag.isCarCO() && utag_data['entity.checkout.car.pickUpLocation.locationCode'] != undefined){
-    utag_data['origin'] = utag_data['entity.checkout.car.pickUpLocation.locationCode'];
-}
- else if(utag.isCarCO() && utag_data.entity.tripDetails != undefined){
-    utag_data['origin'] = utag_data.entity.tripDetails.carInfo.pickUpLocation.locationCode;
-}
- else if(utag.isLXCO()){
-    utag_data['origin'] = utag_data['entity.checkout.activity.activityDetail.destination'];
-}
- else if (utag.isCruiseCO()){
-    utag_data['origin'] = utag_data['entity.checkout.cruise.embarkationPortName'];
-}
- else if (utag.isCruiseSR() && utag_data.entity && utag_data.entity.cruiseSearch && utag_data.entity.cruiseSearch.cruiseSearchCriteria
- && Array.isArray(utag_data.entity.cruiseSearch.cruiseSearchCriteria.embarkationPorts))
- {
-     utag_data['origin'] = utag_data.entity.cruiseSearch.cruiseSearchCriteria.embarkationPorts.join('|');
- }
- else if (utag.isCarSR() && utag_data['entity.carSearch.searchCriteria.pickUpLocation.locationCode'] != undefined){
-  utag_data['origin'] = utag_data['entity.carSearch.searchCriteria.pickUpLocation.locationCode'];
-}
- else if (utag.isFSR()){
-    utag_data['origin'] = utag_data['entity.flightSearch.searchParameters.departureAirportCityState'];
-}
- else if (utag.isPSR()){
-    utag_data['origin'] = utag_data['entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirportCityState'];
-}
- else if (utag.isMCO()) {
-  if (utag_data['originAirportCode'] != undefined) {
-    utag_data['origin'] = utag_data['originAirportCode'];
-  }
-  else if (utag_data['entity.checkout.hotels.0.cityCode'] != undefined) {
-    utag_data['origin'] = utag_data['entity.checkout.hotels.0.cityCode'];
-  }
-  else if (utag_data['entity.checkout.cars.0.pickUpLocation.locationCode'] != undefined) {
-    utag_data['origin'] = utag_data['entity.checkout.cars.0.pickUpLocation.locationCode'];
-  }
-}
- **/

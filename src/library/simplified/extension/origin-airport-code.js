@@ -30,3 +30,6 @@ else if ((utag.isFCO() || utag.isPCO()) && b['entity.checkout.flightOffer.flight
 else if (utag.isMCO && b['entity.checkout.flightOffers.0.flight.legs.0.departureAirportCode']) {
     b['originAirportCode'] = b['entity.checkout.flightOffers.0.flight.legs.0.departureAirportCode'];
 }
+else if (utag.isPCF() && b['entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirport']) {
+    b['originAirportCode'] = b['entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirport'];
+}

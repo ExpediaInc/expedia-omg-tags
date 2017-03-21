@@ -22,14 +22,16 @@ b["cescLastTouchMarketingCode"] = lastTouchMarketingCode;
 b["cescPriorTouchTimeStamp"] = priorTimeStamp;
 b["cescPriorTouchMarketingCode"] = priorMarketingCode;
 
-
+b['cescLastTouch_isexpired'] = true;
 var dateDifference = parseInt((new Date() - new Date(lastTouchTimeStamp))/(1000*60*60*24));
 if(dateDifference <= 30 && dateDifference >= 0) {
     b['cescLastTouch_isexpired'] = false;
-}else {
-    b['cescLastTouch_isexpired'] = true;
 }
 
+b["cescChannel"] = "";
+b["cescCompany"] = "";
+b["cescCountry"] = "";
+b["cescNetwork"] = "";
 if(lastTouchMarketingCode.split(".").length >= 4){
     b["cescChannel"] = lastTouchMarketingCode.split(".")[0];
     b["cescCompany"] = lastTouchMarketingCode.split(".")[1];

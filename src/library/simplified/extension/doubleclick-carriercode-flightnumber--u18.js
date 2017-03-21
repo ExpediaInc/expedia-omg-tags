@@ -1,9 +1,9 @@
 /**
 b['carrierCodes'] = "SQ|SQ"
 b['flightNumbers'] = "31|402"
-b['u18'] = "SQ31|SQ402"
+b['carrierCodeandFlightNumber'] = "SQ31|SQ402"
 **/
-    b['u18'] = '';
+    b['carrierCodeandFlightNumber'] = '';
     if (b['carrierCodes'] != undefined && b['flightNumbers'] != undefined) {
         var carrierCodeArray = b['carrierCodes'].split('|');
         var flightNumArray = b['flightNumbers'].split('|');
@@ -15,5 +15,5 @@ b['u18'] = "SQ31|SQ402"
                 }
             }
         }
-        b['u18'] = carrierFlightNum.slice(0, - 1);
+        b['carrierCodeandFlightNumber'] = carrierFlightNum.slice(0, - 1);
 }

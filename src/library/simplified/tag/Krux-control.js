@@ -83,20 +83,16 @@ try {
                     var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(k,s);
                 }());
             }
-            try{
-                if(!published){
-                    omg.pixel.fireTagAndLogPixel({id: id, name: 'krux-Control-Tag', dataMapping: dataMapping});
-                    published = true;
-                }
-            } catch (ex){}
+            if(!published){
+                omg.pixel.fireTagPixel({id: id, name: 'krux-control-tag', label: 'Krux Control Tag', context: { u: u, b: b }});
+                published = true;
+            }
             utag.DB("send:##UTID##:COMPLETE");
         }
     };
         utag.o[loader].loader.LOAD(id);
-        omg.pixel.fireTagPixel({id: id, name: 'krux-control-tag'});
     }("##UTID##", "##UTLOADERID##"));
 } catch (error) {
     utag.DB(error);
 }
 //end tealium universal tag
-

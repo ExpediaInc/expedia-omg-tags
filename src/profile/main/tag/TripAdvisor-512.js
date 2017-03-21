@@ -156,20 +156,13 @@ try {
             //u.loader({"type" : "img", "src" : u.data.base_url + c.join(u.data.qsp_delim) });
 
             /* End Loader Function Call */
-
-
+            omg.pixel.fireTagPixel({ id: id, name: 'tripadvisor-retargeting', label: 'TripAdvisor Retargeting', context: {u: u, b: b}});
             //##UTENABLEDEBUG##utag.DB("send:##UTID##:COMPLETE");
         }
     };
         utag.o[loader].loader.LOAD(id);
-        omg.pixel.fireTagPixel({id: id, name: 'tripadvisor-retargeting'});
-        try{
-            omg.pixel.fireTagAndLogPixel({id: id, name: 'TripAdvisor-Retargeting', dataMapping: dataMapping});
-        } catch (ex){}
-
     })("##UTID##", "##UTLOADERID##");
 } catch (error) {
     utag.DB(error);
 }
 //end tealium universal tag
-

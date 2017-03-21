@@ -54,7 +54,7 @@ if (typeof(window.utag_data) !== "undefined" && window.utag_data["device.device.
             {
                 b["line_cc"] = localStorage.getItem("line_cc");
 
-                if (typeof(b["line_cc"])!== "undefined" && b["line_cc"]!=="" && typeof(b["line_uid"])!=="undefined" && b["line_uid"] !== "")
+                if (typeof b["line_cc"] !== "undefined" && b["line_cc"] && typeof b["line_uid"] !== "undefined" && b["line_uid"])
                 {
                     b["lineParameterExists"] = "true";
                 }

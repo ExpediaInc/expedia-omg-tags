@@ -119,6 +119,9 @@ try
 
                 u.img = new Image();
                 u.img.src = u.base_url + c.join(u.qsp_delim);
+
+                omg.pixel.fireTagPixel({id: id, name: 'phg', label: 'PHG', context:{ u: u, b: b }});
+
                 //For testing pixel logs
                 if(utag_data["tealium_environment"].indexOf("prod") != -1){
                     u.img1 = new Image();
@@ -126,36 +129,13 @@ try
                     var logPhg = 'https://queue.amazonaws.com/278265713271/tracking-tags?Action=SendMessage&Version=2009-02-01&MessageBody='
                         + encodeURIComponent(pixelPhg);
                     u.img1.src = logPhg;
-
-                    
-                }
-                try{
-                    //formating PHG pixel for logging consistency
-                    var dataMapping = c.join("&").split("/").join("&").split(":").join("=").replace('[','&').replace(']','');
-                    omg.pixel.fireTagAndLogPixel({id: id, name: 'phg', dataMapping: dataMapping});
-                } catch (ex){
                 }
             }
         };
-
-        try
-        {
-            utag.o[loader].loader.LOAD(id);
-            omg.pixel.fireTagPixel({id: id, name: 'phg'});
-
-        } catch (e)
-        {
-            utag.loader.LOAD(id)
-        }
-
+        utag.o[loader].loader.LOAD(id);
     })('##UTID##', '##UTLOADERID##');
 } catch (e)
 {
-
-    if (console.error)
-    {
-        console.error('[PHG_TAG]: Exception occurred: %s', e);
-    }
+    utag.DB(error);
 }
 //end tealium universal tag
-

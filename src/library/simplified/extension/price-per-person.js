@@ -16,24 +16,18 @@ else if((utag.isHCO()|| utag.isFCO() || utag.isPCO()|| utag.isLXCO() || utag.isM
 }
 else if (utag.isFRateDetails() && (b['entity.flight.flight.avgPriceOfAdultAndSenior.amount'] || b['entity.flight.flight.avgPriceOfChildrenAndInfants.amount']))
 {
-    b['pricePerPerson'] = b['entity.flight.flight.avgPriceOfAdultAndSenior.amount'] + "|" + b['entity.flight.flight.avgPriceOfChildrenAndInfants.amount'];
+    b['pricePerPerson'] = formatAmount(b['entity.flight.flight.avgPriceOfAdultAndSenior.amount']) + "|" + formatAmount(b['entity.flight.flight.avgPriceOfChildrenAndInfants.amount']);
 }
 
-/** old
- utag_data['pricePerPerson'] = '';
- if (utag.isCruiseCO() && utag_data['entity.checkout.cruise.perPassengerPrice.amount'])
- {
-     utag_data['pricePerPerson'] = utag_data['entity.checkout.cruise.perPassengerPrice.amount'];
- }
- else if (utag.isCruiseSR() && utag_data['entity.cruiseSearch.lowestOfferPerPassengerPrice.amount'])
- {
-     utag_data['pricePerPerson'] = utag_data['entity.cruiseSearch.lowestOfferPerPassengerPrice.amount'];
- }
- else if((utag.isHCO()|| utag.isFCO() || utag.isPCO()|| utag.isLXCO()) && utag_data['checkout.cartTotal.amount'] && utag_data['numberOfGuests'])
- {
-   if(utag_data['numberOfGuests'] > 0)
-   {
-     utag_data['pricePerPerson'] = (utag_data['checkout.cartTotal.amount'] / utag_data['numberOfGuests']).toFixed(2);
-   }
- }
- **/
+function formatAmount(amount) {
+    amount= amount.toFixed(2);
+    amount += '';
+	x = amount.split('.');
+	x1 = x[0];
+	x2 = x.length > 1 ? '.' + x[1] : '';
+	var rgx = /(\d+)(\d{3})/;
+	while (rgx.test(x1)) {
+		x1 = x1.replace(rgx, '$1' + ',' + '$2');
+	}
+	return x1 + x2;
+}
