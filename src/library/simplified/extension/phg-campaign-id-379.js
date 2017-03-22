@@ -1,12 +1,15 @@
+// remove the below line and last line of extension before publishing to production
 if(b["ut.env"] == "dev") {
+
 // output variable
 b["campaignId"] = "";
 
 // defensive logic is the best
 var ctr = b["cescCountry"] || "";
 var mkt = b["cescLastTouchMarketingCode"] || "";
+var ntw = b["cescNetwork"] || "";
 
-// astminute is the only site (profile) where we have different campaign ids per site id
+// lastminute is the only site (profile) where we have different campaign ids per site id
 var pfl = b["ut.profile"] != "lastminute" ? b["ut.profile"] : b["siteId"];
 
 // so we don't have to do this over and over. determines what campaign the visitor came in from.
@@ -23,7 +26,7 @@ var campaignTrack = function(ctry, mktg_code, result) {
 };
 
 // condition for PHG campaign
-if ((utag.isCO() || utag.is3pp()) && (b["cescNetwork"].toLowerCase().indexOf("phg") > -1 || b["cescLastTouchMarketingCode"].toLowerCase().indexOf("phg") > -1)) {
+if ((utag.isCO() || utag.is3pp()) && (ntw.toLowerCase().indexOf("phg") > -1 || mkt.toLowerCase().indexOf("phg") > -1)) {
 
     // assign campaign ids per campaign track AND profile/siteid
     switch (pfl) {
