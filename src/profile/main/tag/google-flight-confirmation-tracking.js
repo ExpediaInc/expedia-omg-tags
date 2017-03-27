@@ -52,15 +52,12 @@ try {
                 //"base_url" : "//www.googleadservices.com/pagead/conversion.js" //www.googletraveladservices.com/travel/clk/pagead/conversion/
                 "base_url" : "https://ec3novn2y2.execute-api.us-west-2.amazonaws.com/test",
                 "partner_id" : "89",
-                "partner_hotel_id" : "",
-                "base_price" : "",
-                "total_price" : "",
-                "currency_code" : "",
-                "checkin_date" : "",//'2015-11-01',
-                "checkout_date" : "",//'2015-11-03',
-                "length_of_stay" : "",
-                "hct_date_format" : '%25Y-%25m-%25d',
-                "booking_xref" : ""
+                "booking_date" : "",//'2015-11-01',   
+                "checkin_date" : "",//'2015-11-01', 
+                "checkout_date" : "",//'2015-11-03', 
+                "adults_count": "",
+                "child_count": "",
+                "hct_date_format" : '%25Y-%25m-%25d'
                 /* A value mapped to "account_id" or "base_url" in TiQ will replace these default values. */
             };
 
@@ -107,16 +104,14 @@ try {
             //src="https://www.googletraveladservices.com/travel/clk/pagead/
             // u.data.base_url +=  u.data.partner_id +"/?label=HPA&guid=ON&script=0&ord="+Math.random()*10000000000000000;
             u.data.base_url += "/?";
-            u.data.base_url += "data=hct_partner_hotel_id%3D"+ u.data.partner_hotel_id+"%3B";
-            u.data.base_url += "hct_base_price%3D"+ u.data.base_price +"%3B";
-            u.data.base_url += "hct_total_price%3D"+ u.data.total_price +"%3B";
-            u.data.base_url += "hct_currency_code%3D"+ u.data.currency_code +"%3B";
-            u.data.base_url += "hct_checkin_date%3D"+ u.data.checkin_date+"%3B";
+            u.data.base_url += "data=hct_partner_hotel_id%3D"+ u.data.partner_hotel_id+ "%3B";
+            u.data.base_url += "&data=hct_booking_date%3D"+ u.data.booking_date + "%3B";
+            u.data.base_url += "hct_checkin_date%3D"+ u.data.checkin_date + "%3B";
             u.data.base_url += "hct_checkout_date%3D"+ u.data.checkout_date + "%3B";
-            u.data.base_url += "hct_length_of_stay%3D"+ u.data.length_of_stay +"%3B";
+            u.data.base_url += "hct_adults_count%3D"+ u.data.adults_count +"%3B";
+            u.data.base_url += "hct_child_count%3D"+ u.data.child_count + "%3B";            
             u.data.base_url += "hct_date_format%3D" + u.data.hct_date_format + "%3B";
-            u.data.base_url += "hct_booking_xref%3D" + u.data.booking_xref + "%3B";
-            u.data.base_url += "hct_ver%3D1.0.j"
+            u.data.base_url += "hct_ver%3D1.0.j";
 
 
             /* End Tag Sending Code */
