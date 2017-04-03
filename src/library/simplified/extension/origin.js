@@ -31,6 +31,12 @@ else if (utag.isFSR() || utag.isPCF()){
 else if (utag.isPSR()){
     b['origin'] = b['entity.packageSearch.packageSearchParameters.flightSearchParameters.departureAirportCityState'];
 }
+else if (utag.isRCO()){
+    b['origin'] = b['entity.checkout.railOffers.0.railProductList.0.legOptionList.0.travelSegmentList.0.departureStationName'];
+}
+else if (utag.isRailUDP() && b['entity.railSearch.railDetail.railLegs.0.railOfferItems.0.departureStation.name']) {
+    b['origin'] = b['entity.railSearch.railDetail.railLegs.0.railOfferItems.0.departureStation.name'];
+}
 else if (utag.isMCO()) {
     if (b['originAirportCode']) {
         b['origin'] = b['originAirportCode'];

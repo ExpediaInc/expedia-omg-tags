@@ -56,6 +56,10 @@ else if (utag.isFSR() && b['entity.flightSearch.searchParameters.arrivalAirportC
 {
     b['destination'] = b['entity.flightSearch.searchParameters.arrivalAirportCityState']
 }
+else if (utag.isRailUDP() && b['entity.railSearch.railDetail.railLegs.0.railOfferItems.0.arrivalStation.name'])
+{
+    b['destination'] = b['entity.railSearch.railDetail.railLegs.0.railOfferItems.0.arrivalStation.name'];
+}
 else if ((utag.isCarSR() || utag.isPCarSearch()) && utag_data["entity.carSearch.searchCriteria.pickUpLocation.regionName"]) {
     utag_data['destination'] = utag_data["entity.carSearch.searchCriteria.pickUpLocation.regionName"].split(",")[0];
     if (utag_data["entity.carSearch.searchCriteria.dropOffLocation.regionName"] != undefined) {

@@ -3,6 +3,10 @@ if (utag.isFRateDetails() && b['entity.flight.flight.totalPrice.amount']){
     b['totalPrice'] = formatAmount(b['entity.flight.flight.totalPrice.amount']);
 }
 
+if (utag.isRailUDP() && utag_data["entity.railSearch.railDetail.railLegs.0.railOfferItems.0.price.amount"]) {
+    b['totalPrice'] = formatAmount(b['entity.railSearch.railDetail.railLegs.0.railOfferItems.0.price.amount']);
+}
+
 function formatAmount(amount) {
     amount= amount.toFixed(2);
     amount += '';

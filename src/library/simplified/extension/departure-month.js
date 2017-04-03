@@ -10,6 +10,9 @@
     else if ((utag.isCruiseIS() || utag.isCruiseTP() || utag.isCruiseCabinN()) && b['entity.cruise.isoFormatDepartureDate']) {
         b['departureMonth'] = getDepartureMonth('entity.cruise.isoFormatDepartureDate');
     }
+    else if (utag.isRailUDP() && b["entity.railSearch.railDetail.isoFormatDepartureDate"] ) {
+        b['departureMonth'] = getDepartureMonth('entity.railSearch.railDetail.isoFormatDepartureDate');
+    }
 
     function getDepartureMonth(utagKey) {
         if (utagKey) {
