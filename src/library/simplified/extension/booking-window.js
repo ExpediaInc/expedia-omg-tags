@@ -24,6 +24,9 @@ else if (utag.isCarItinPage() && b['entity.tripDetails.utcTripStartDate'])
 else if(b.checkInDate != undefined && b.checkInDate != ""){
     b['bookingWindow'] = bw_daydiff( new Date(), new Date(b.checkInDate) );
 }
+else if (utag.isRailUDP() && b.checkInDate) {
+    b['bookingWindow'] = bw_daydiff(new Date() , new Date(b.checkInDate));
+}
 
 /** old
  utag_data['bookingWindow'] = '';

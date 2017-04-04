@@ -199,6 +199,9 @@ else if (utag.isItinPage()){
 else if (utag.isPCF() && b['entity.packageSearch.packageSearchParameters.isoFormatReturnDate']) {
     b['checkOutDate'] = b['entity.packageSearch.packageSearchParameters.isoFormatReturnDate'];
 }
+else if (utag.isRailUDP() && b['entity.railSearch.railDetail.isoFormatReturnDate']{
+    b['checkOutDate'] = b['entity.railSearch.railDetail.isoFormatReturnDate'];
+}
 if(b["checkOutDate"] != '')
 {
     b["checkOutDate"] = b["checkOutDate"].split("T")[0];

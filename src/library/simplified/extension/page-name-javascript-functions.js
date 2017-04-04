@@ -512,3 +512,22 @@ window.utag.isPIS_FlightHotel = function(){
     }
     return false;
 }
+
+// Rails
+window.utag.isRailRateDetails = function() {
+    if(pageName.indexOf("page.Rail.Ratedetails") > -1) {
+        b["isRailUDP"] = true;
+        b["pageType"] = "UDP";
+        return true;
+    }
+    return false;
+}
+
+window.utag.isRCO = function() {
+    if (pageName.indexOf("page.Rail.Checkout.Confirmation") > -1) {
+        b["isRCO"] = true;
+        b["pageType"] = "Confirmation";
+        return true;
+    }
+    return false;
+}

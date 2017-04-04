@@ -40,3 +40,9 @@ else if (utag.isMCO() && b['entity.checkout.flightOffers.0.flight.legs.0.segment
 else if (utag.isPCF() && b['entity.packageSearch.packageSearchParameters.flightSearchParameters.travelClass']) {
     b['cabinClass'] = b['entity.packageSearch.packageSearchParameters.flightSearchParameters.travelClass'];
 }
+else if(utag.isRCO() && b['entity.checkout.railOffers.0.railProductList.0.legOptionList.0.travelSegmentList.0.availableSeatPreferenceList.0.serviceClass']){
+   b['cabinClass'] = b['entity.checkout.railOffers.0.railProductList.0.legOptionList.0.travelSegmentList.0.availableSeatPreferenceList.0.serviceClass'];
+}
+else if (utag.isRailUDP() && b['entity.railSearch.railDetail.railLegs.0.railOfferItems.0.fareClass']) {
+   b['cabinClass'] = b['entity.railSearch.railDetail.railLegs.0.railOfferItems.0.fareClass'];
+}
