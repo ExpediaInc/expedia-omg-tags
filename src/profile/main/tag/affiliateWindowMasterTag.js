@@ -96,6 +96,12 @@ try{
           u.s=document.getElementsByTagName("script")[0];u.scr=document.createElement("script");u.scr.type="text/javascript";u.scr.src=u.data.base_url+c.join(u.data.qsp_delim);
           u.s.parentNode.insertBefore(u.scr,u.s);
 
+          try{
+              omg.pixel.fireTagPixel({id: id, name: 'affiliatewindow', label: 'affiliatewindow', context:{ u: u, b: b }});
+          }catch(e){
+              utag.DB(error);
+          }
+
       }
   };
         try{utag.o[loader].loader.LOAD(id)}catch(e){utag.loader.LOAD(id)}
