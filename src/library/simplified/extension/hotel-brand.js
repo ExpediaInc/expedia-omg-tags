@@ -11,6 +11,9 @@ else if (utag.isPCO() && b['entity.tripDetails.hotelOffer.hotelDescription.hotel
 {
     b['hotelBrand'] = b['entity.tripDetails.hotelOffer.hotelDescription.hotelBrand'];
 }
+else if(utag.isPCO() && b["entity.checkout.hotel.hotelBrand"]){
+    b['hotelBrand'] = b["entity.checkout.hotel.hotelBrand"];
+}
 
 
 /** old
