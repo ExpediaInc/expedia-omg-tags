@@ -23,7 +23,7 @@ window.utag.isHotelLanding = function(){
     return false;
 }
 window.utag.isHSR = function(){
-    if(pageName.indexOf("page.Hotel-Search") > -1 || pageName.indexOf("page.Hotels-Search") > -1 || pageName.indexOf("page.Hotels.Search") > -1 || pageName.indexOf("page.Hotel.Search") > -1 || pageName.toLowerCase().indexOf("page.Package.HC.Hotel-Search".toLowerCase()) > -1){
+    if(pageName.indexOf("page.Hotel-Search") > -1 || pageName.indexOf("page.Hotels-Search") > -1 || pageName.indexOf("page.Hotels.Search") > -1 || pageName.indexOf("page.Hotel.Search") > -1){
         b["isHSR"] = true;
         b["pageType"] = "Search";
         return true;
