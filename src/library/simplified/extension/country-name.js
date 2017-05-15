@@ -1,8 +1,10 @@
+var packageSearchOrInfosite = utag.isPSR_FH_Responsive() || utag.isPSR_F_Responsive() || utag.isPSR_FC() || utag.isPSR_FHC() || utag.isPIS_FHC() || utag.isPSR_HC() || utag.isPIS_HotelCar() || utag.isPIS_FH();
+
 if(utag.isHSR() && typeof b.entity.hotels.search.country != "undefined"){
     var getCountry = b.entity.hotels.search.country.split(",");
     b["country"] = getCountry[getCountry.length -1];
 }
-else if((utag.isRailSearchResults) && b["entity.railSearch.searchParameters.arrivalStation.name"] != undefined) 
+else if((utag.isRailSearchResults) && b["entity.railSearch.searchParameters.arrivalStation.name"] != undefined) {
     b["country"] = b["entity.railSearch.searchParameters.arrivalStation.name"].split(",")[2];
 }
 else if((utag.isHIS() || utag.isPIS()) && typeof b.entity.hotels.listOfHotels[0] != "undefined" && b.entity.hotels.listOfHotels[0].length > 0 && typeof b.entity.hotels.listOfHotels[0].hotelCountryName != "undefined"){
@@ -11,16 +13,15 @@ else if((utag.isHIS() || utag.isPIS()) && typeof b.entity.hotels.listOfHotels[0]
 else if((utag.isHCO() || utag.isHPymt() || utag.isPPymt() || utag.isPCO()) && typeof b["entity.checkout.hotel.hotelCountryName"] != "undefined"){
     b["country"] = b["entity.checkout.hotel.hotelCountryName"];
 }
-else if(utag.isCarSR() && typeof b.entity.carSearch.searchCriteria.dropOffLocation != "undefined"){
+else if((utag.isCarSR() || utag.isPCarSearch()) && typeof b.entity.carSearch.searchCriteria.dropOffLocation != "undefined"){
     var getCountryName = b.entity.carSearch.searchCriteria.dropOffLocation.regionName.split(",");
     b["country"] = getCountryName[getCountryName.length -1];
 }
 
-else if((isPSR_FHC || isPIS_FHC || isPSR_HC || isPIS_HotelCar)  && b.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState != undefined) {
+else if(packageSearchOrInfosite  && b.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState != undefined) {
 	b["country"] = b["entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState"].split(",")[2]
 }
-
-else if((utag.isPSR_FH_Responsive() || utag.isPIS_FH() || utag.isPSR_FC() || utag.isPIS_FlightHotel()) &&
+else if(utag.isPIS_FlightHotel() &&
     (b.entity.packageSearch.packageSearchParameters.flightSearchParameters != undefined)){
     b["country"] = b["entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalCountry"];
 }
@@ -31,10 +32,6 @@ else if(utag.isPSR() && b.entity.packageFHSearch != undefined
 else if (utag.isFSR() && b["entity.flightSearch.searchParameters.arrivalCountry"] != undefined){
     b["country"] = getCountryName(b["entity.flightSearch.searchParameters.arrivalCountry"]);
 } 
-else if (utag.isPCarSearch() && b["entity.carSearch.searchCriteria.pickUpLocation.regionName"] != undefined) {
-    var getCountry = b["entity.carSearch.searchCriteria.pickUpLocation.regionName"];
-    b["country"] = getCountry[getCountry.length -1];
-}
 else if (utag.isMCO()) {
     if (b["entity.checkout.hotels.0.hotelCountryName"] != undefined) {
         b["country"] = b["entity.checkout.hotels.0.hotelCountryName"];
