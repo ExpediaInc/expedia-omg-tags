@@ -16,9 +16,9 @@ if(b.siteId && utag.isFRateDetails() ){
       b['doubleclick.cat.fRateDetails'] = "nacan028";
       break;
    case 6:
-      b['doubleclick.src.fRateDetails'] = "2589202";
-      b['doubleclick.type.fRateDetails'] = "emead466";
-      b['doubleclick.cat.fRateDetails'] = "emead839";
+      b['doubleclick.src.fRateDetails'] = "2589196";
+      b['doubleclick.type.fRateDetails'] = "emeag857";
+      b['doubleclick.cat.fRateDetails'] = "emeag612";
       break;
    case 8:
       b['doubleclick.src.fRateDetails'] = "2589197";
@@ -50,21 +50,7 @@ if(b.siteId && utag.isFRateDetails() ){
       b['doubleclick.type.fRateDetails'] = "apacm103";
       b['doubleclick.cat.fRateDetails'] = "apacm665";
       break;
-   case 16:
-      b['doubleclick.src.fRateDetails'] = "2997587";
-      b['doubleclick.type.fRateDetails'] = "apack568";
-      b['doubleclick.cat.fRateDetails'] = "apack914";
-      break;
-   case 17:
-      b['doubleclick.src.fRateDetails'] = "2997550";
-      b['doubleclick.type.fRateDetails'] = "apact438";
-      b['doubleclick.cat.fRateDetails'] = "apact188";
-      break;
-   case 18:
-      b['doubleclick.src.fRateDetails'] = "3012675";
-      b['doubleclick.type.fRateDetails'] = "apach256";
-      b['doubleclick.cat.fRateDetails'] = "apach653";
-      break;
+	  
    case 20:
       b['doubleclick.src.fRateDetails'] = "2589195";
       b['doubleclick.type.fRateDetails'] = "emeaf419";
@@ -90,16 +76,7 @@ if(b.siteId && utag.isFRateDetails() ){
       b['doubleclick.type.fRateDetails'] = "apacn043";
       b['doubleclick.cat.fRateDetails'] = "apacn584";
       break;
-   case 61:
-      b['doubleclick.src.fRateDetails'] = "3193419";
-      b['doubleclick.type.fRateDetails'] = "apaci419";
-      b['doubleclick.cat.fRateDetails'] = "apaci850";
-      break;
-   case 62:
-      b['doubleclick.src.fRateDetails'] = "2997604";
-      b['doubleclick.type.fRateDetails'] = "apact361";
-      b['doubleclick.cat.fRateDetails'] = "apact911";
-      break;
+	  
    case 63:
       b['doubleclick.src.fRateDetails'] = "2589199";
       b['doubleclick.type.fRateDetails'] = "emeai191";
@@ -129,7 +106,7 @@ if(b.siteId && utag.isFRateDetails() ){
       b['doubleclick.src.fRateDetails'] = "2997741";
       b['doubleclick.type.fRateDetails'] = "apacp656";
       b['doubleclick.cat.fRateDetails'] = "apacp184";
-      break;
+      break; 	  
    case 69:
       b['doubleclick.src.fRateDetails'] = "3224677";
       b['doubleclick.type.fRateDetails'] = "latam050";
@@ -156,124 +133,49 @@ if(b.siteId && utag.isFRateDetails() ){
       b['doubleclick.cat.fRateDetails'] = "emeaf636";
       break;
    case 74:
-      b['doubleclick.src.fRateDetails'] = "2588791";
-      b['doubleclick.type.fRateDetails'] = "emeau111";
-      b['doubleclick.cat.fRateDetails'] = "emeau626";
+      b['doubleclick.src.fRateDetails'] = "2589199";
+      b['doubleclick.type.fRateDetails'] = "emeai191";
+      b['doubleclick.cat.fRateDetails'] = "emeai387";
       break;
    case 1146:
       b['doubleclick.src.fRateDetails'] = "3645995";
       b['doubleclick.type.fRateDetails'] = "nausa900";
       b['doubleclick.cat.fRateDetails'] = "nausr631";
       break;
-   case 1257:
-      b['doubleclick.src.fRateDetails'] = "3014117";
-      b['doubleclick.type.fRateDetails'] = "apacm652";
-      b['doubleclick.cat.fRateDetails'] = "apacm602";
-      break;
-   case 2001:
-      b['doubleclick.src.fRateDetails'] = "2955650";
-      b['doubleclick.type.fRateDetails'] = "apacs466";
-      b['doubleclick.cat.fRateDetails'] = "apacs004";
-      break;
    case 70125:
-      b['doubleclick.src.fRateDetails'] = "4576604";
-      b['doubleclick.type.fRateDetails'] = "wotif00";
-      b['doubleclick.cat.fRateDetails'] = "wotif000";
+      b['doubleclick.src.fRateDetails'] = "4598511";
+      b['doubleclick.type.fRateDetails'] = "apaca0";
+      b['doubleclick.cat.fRateDetails'] = "apaca001";
       break;
    case 70129:
-      b['doubleclick.src.fRateDetails'] = "4575619";
-      b['doubleclick.type.fRateDetails'] = "wotif0";
-      b['doubleclick.cat.fRateDetails'] = "wotif000";
+      b['doubleclick.src.fRateDetails'] = "4600929";
+      b['doubleclick.type.fRateDetails'] = "apacn00";
+      b['doubleclick.cat.fRateDetails'] = "apacn001";
       break;
    case 70150:
-      b['doubleclick.src.fRateDetails'] = "4748045";
-      b['doubleclick.type.fRateDetails'] = "lastm00";
-      b['doubleclick.cat.fRateDetails'] = "lastm000";
+      b['doubleclick.src.fRateDetails'] = "4693435";
+      b['doubleclick.type.fRateDetails'] = "apaca00";
+      b['doubleclick.cat.fRateDetails'] = "apaca000";
       break;
    case 70151:
-      b['doubleclick.src.fRateDetails'] = "4757279";
-      b['doubleclick.type.fRateDetails'] = "lastm00";
-      b['doubleclick.cat.fRateDetails'] = "lastm000";
+      b['doubleclick.src.fRateDetails'] = "4692458";
+      b['doubleclick.type.fRateDetails'] = "apacn00";
+      b['doubleclick.cat.fRateDetails'] = "apacn000";
       break;
    case 70201:
-      b['doubleclick.src.fRateDetails'] = "5197940";
-      b['doubleclick.type.fRateDetails'] = "nauso0";
-      b['doubleclick.cat.fRateDetails'] = "nauso000";
+      b['doubleclick.src.fRateDetails'] = "5179340";
+      b['doubleclick.type.fRateDetails'] = "nauso00";
+      b['doubleclick.cat.fRateDetails'] = "orb03";
       break;
    case 70301:
-      b['doubleclick.src.fRateDetails'] = "5197539";
-      b['doubleclick.type.fRateDetails'] = "nausc00";
-      b['doubleclick.cat.fRateDetails'] = "nausc00";
+      b['doubleclick.src.fRateDetails'] = "5192003";
+      b['doubleclick.type.fRateDetails'] = "nausc0";
+      b['doubleclick.cat.fRateDetails'] = "ctix04";
       break;
    case 80001:
-      b['doubleclick.src.fRateDetails'] = "4260687";
-      b['doubleclick.type.fRateDetails'] = "naust587";
-      b['doubleclick.cat.fRateDetails'] = "naust103";
-      break;
-   case 80004:
-      b['doubleclick.src.fRateDetails'] = "4260726";
-      b['doubleclick.type.fRateDetails'] = "nacat927";
-      b['doubleclick.cat.fRateDetails'] = "nacat262";
-      break;
-   case 3140309:
-      b['doubleclick.src.fRateDetails'] = "2589201";
-      b['doubleclick.type.fRateDetails'] = "emeas325";
-      b['doubleclick.cat.fRateDetails'] = "emeas660";
-      break;
-   case 3270335:
-      b['doubleclick.src.fRateDetails'] = "2589200";
-      b['doubleclick.type.fRateDetails'] = "emean433";
-      b['doubleclick.cat.fRateDetails'] = "emean640";
-      break;
-   case 3920336:
-      b['doubleclick.src.fRateDetails'] = "2589202";
-      b['doubleclick.type.fRateDetails'] = "emead466";
-      b['doubleclick.cat.fRateDetails'] = "emead839";
-      break;
-   case 7110307:
-      b['doubleclick.src.fRateDetails'] = "2589199";
-      b['doubleclick.type.fRateDetails'] = "emeai191";
-      b['doubleclick.cat.fRateDetails'] = "emeai387";
-      break;
-   case 10122006:
-      b['doubleclick.src.fRateDetails'] = "2589203";
-      b['doubleclick.type.fRateDetails'] = "emeaa616";
-      b['doubleclick.cat.fRateDetails'] = "emeaa963";
-      break;
-   case 70403:
-      b['doubleclick.src.fRateDetails'] = "5472717";
-      b['doubleclick.type.fRateDetails'] = "emeau00";
-      b['doubleclick.cat.fRateDetails'] = "emeau000";
-      break;
-   case 70406:
-      b['doubleclick.src.fRateDetails'] = "5484924";
-      b['doubleclick.type.fRateDetails'] = "emead00";
-      b['doubleclick.cat.fRateDetails'] = "emead001";
-      break;
-   case 70420:
-      b['doubleclick.src.fRateDetails'] = "5472721";
-      b['doubleclick.type.fRateDetails'] = "emeaf000";
-      b['doubleclick.cat.fRateDetails'] = "emeaf00";
-      break;
-   case 70463:
-      b['doubleclick.src.fRateDetails'] = "5488524";
-      b['doubleclick.type.fRateDetails'] = "emeai00";
-      b['doubleclick.cat.fRateDetails'] = "emeai000";
-      break;
-   case 70472:
-      b['doubleclick.src.fRateDetails'] = "5469129";
-      b['doubleclick.type.fRateDetails'] = "emeac00";
-      b['doubleclick.cat.fRateDetails'] = "emeac000";
-      break;
-   case 70473:
-      b['doubleclick.src.fRateDetails'] = "5470592";
-      b['doubleclick.type.fRateDetails'] = "emeaf00";
-      b['doubleclick.cat.fRateDetails'] = "emeaf000";
-      break;
-   case 70465:
-      b['doubleclick.src.fRateDetails'] = "5522838";
-      b['doubleclick.type.fRateDetails'] = "emeas00";
-      b['doubleclick.cat.fRateDetails'] = "emeas000";
+      b['doubleclick.src.fRateDetails'] = "5439637";
+      b['doubleclick.type.fRateDetails'] = "natra00";
+      b['doubleclick.cat.fRateDetails'] = "natra00";
       break;
    default:
       break;
