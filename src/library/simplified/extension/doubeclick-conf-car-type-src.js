@@ -1,4 +1,4 @@
-if(b.siteId && (utag.isLXCO() || utag.isCarCO() || utag.isHCO())){
+if(b.siteId && (utag.isLXCO() || utag.isCarCO() || utag.isHCO() || utag.isFCO())){
     switch(b.siteId){
         case 1:
             b['doubleclick.src.conf'] = "2588783";
