@@ -17,7 +17,21 @@ else if (utag.isFRateDetails() && b.entity.flight.flight.flight.legs != "undefin
         }
     b["cabinClass"] = cabinClass.slice(0, -1);
 }
-else if ((utag.isPCO() || utag.isFCO()) && b['entity.checkout.flightOffer.flight.legs.0.segments.0.cabinClass'])
+else if (utag.isFCO() && b.entity.checkout.flightOffer.flight.legs != "undefined")
+{
+    var numLegs = '0';
+    var numSegments = '0';
+    var cabinClass = "";
+    numLegs = b.entity.checkout.flightOffer.flight.legs.length;
+    for (var i = 0; i < numLegs; i++) {
+        numSegments = b.entity.checkout.flightOffer.flight.legs[i].segments.length;
+            for (var j = 0; j < numSegments; j++){
+                cabinClass = cabinClass + b.entity.checkout.flightOffer.flight.legs[i].segments[j].cabinClass + "|";
+            }
+        }
+    b["cabinClass"] = cabinClass.slice(0, -1);
+}
+else if (utag.isPCO() && b['entity.checkout.flightOffer.flight.legs.0.segments.0.cabinClass'])
 {
     b['cabinClass'] = b['entity.checkout.flightOffer.flight.legs.0.segments.0.cabinClass'];
 }
