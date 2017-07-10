@@ -1,4 +1,7 @@
-if (utag.isFRateDetails() || utag.isPRateDetails())
+if (utag.isFSR() && (b['entity.flightSearch.searchResults.cheapest.airlineCode']))  {
+    b['carrierCodes'] = b['entity.flightSearch.searchResults.cheapest.airlineCode'];
+}
+else if (utag.isFRateDetails() || utag.isPRateDetails())
 {
     if (b.entity.tripDetails.flightOffer.flight.legs != undefined)
     {
@@ -49,6 +52,7 @@ else if (utag.isFPymt() || utag.isFCO() || utag.isPPymt() || utag.isPCO() || uta
         b["carrierCodes"] = carrierCodes.slice(0, -1);
     }
 }
+
 
 /** old
  if (utag.isFRateDetails() || utag.isPRateDetails())
