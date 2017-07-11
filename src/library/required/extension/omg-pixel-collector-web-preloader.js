@@ -292,7 +292,7 @@
             if ('string' !== typeof key) {
                 return undefined;
             }
-            return key.replace(/\./g, "#");
+            return key.replace(/\./g, "");
         }
 
         return dataMapping;
