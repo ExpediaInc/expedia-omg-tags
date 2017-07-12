@@ -1,8 +1,8 @@
 (function ($, omg) {
     // Tag Pixel: omg.pixel.fireTagPixel({id: 1402, name: 'facebook', label: 'Facebook', context: { u. u, b. b} });
     var OMG_PIXEL_ID = 'omgpixel';
-    var COLLECTOR_WEB_TEST = '//collector.test.expedia.com';
-    var COLLECTOR_WEB_PROD = '//collector.prod.expedia.com';
+    var COLLECTOR_WEB_TEST = 'https://collector.test.expedia.com';
+    var COLLECTOR_WEB_PROD = 'https://collector.prod.expedia.com';
     var BATCH_WAIT_TIME_IN_MS = 1000;
     /**
      * @deprecated - TAG_LOGGING - Will be removed on a future story in favor of omgpixel
