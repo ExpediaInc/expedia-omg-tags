@@ -1,4 +1,5 @@
 if(b.siteId && utag.isFSR() ){
+switch(b.siteId){
    case 1:
       b['doubleclick.src.fsr'] = "2588783";
       b['doubleclick.type.fsr'] = "nausc547";
@@ -267,3 +268,4 @@ if(b.siteId && utag.isFSR() ){
    default:
       break;
   }
+}
