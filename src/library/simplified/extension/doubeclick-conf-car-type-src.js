@@ -256,6 +256,6 @@ if(b.siteId && isConfirmationPage()){
 }
 
 function isConfirmationPage() {
-	return (utag.isLXCO() || utag.isCarCO() || utag.isHCO() || utag.isFCO() || utag.isPCO() || utag.isMCO());
+	return (utag.isLXCO() || utag.isCarCO() || utag.isHCO() || utag.isFCO());
 }
 
