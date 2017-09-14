@@ -37,9 +37,9 @@ else if(utag.isHSR()){
 else if (utag.isPIS() && typeof b.entity.packageSearch.results !== undefined) {
     b['pricePerPerson'] = b.entity.packageSearch.results.offers[0].pricePerTraveler.decimalAmountString;
 }
-else if (utag.isPRateDetails() && b['totalPrice'] && b['numberOfGuests']) {
+else if (utag.isPRateDetails() && b['entity.tripDetails.totalPrice.decimalAmountString'] && b['numberOfGuests']) {
     if (b['numberOfGuests'] > 0) {
-        b['pricePerPerson'] = (b['totalPrice'] / b['numberOfGuests']).toFixed(2);
+        b['pricePerPerson'] = (b['entity.tripDetails.totalPrice.decimalAmountString'] / b['numberOfGuests']).toFixed(2);
     }
 }
 
