@@ -1,0 +1,5 @@
+var gaCustAud = "NOSEG";
+if(utag_data['context.user.guid'] != undefined){
+	var gaCustAud = parseInt(utag_data['context.user.guid'].split("-")[0],16) % 101;	  
+}
+ b.ga_user_segment_id = gaCustAud;
