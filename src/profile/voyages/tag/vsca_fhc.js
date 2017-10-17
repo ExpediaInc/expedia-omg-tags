@@ -245,7 +245,7 @@ try {
                         }
                         vsca_pageTag.contextData.products.push(product0);
                     }
-                    if (utag_data.utagPageName == "page.Package.fhc.car.search.list" || utag_data.utagPageName == "page.Package.fhc.car.search.list.aws") {
+                    if (utag_data.utagPageName == "page.Package.fhc.car.search.list" || utag_data.utagPageName == "page.Package.fhc.car.search.list.aws" || utag_data.pageInfo.pageName == "page.Package.fhc.car.search.list.aws") {
                         vsca_pageTag.config.pageId = "FHC.CarSearch";
                         vsca_pageTag.contextData.pageContext = "searchResult";
                         vsca_pageTag.contextData.products = [];
@@ -268,7 +268,7 @@ try {
                         }
                         vsca_pageTag.contextData.products.push(product0);
                     }                    
-		    if (utag_data.utagPageName == "page.Cars.Infosite.Information") {
+        if (utag_data.utagPageName == "page.Cars.Infosite.Information") {
                         vsca_pageTag.config.pageId = "CarInfosite";
                         vsca_pageTag.contextData.pageContext = "basket";
                         var product0 = {
@@ -443,8 +443,6 @@ try {
                         vsca_pageTag.contextData.products.push(product0);
                         vsca_pageTag.contextData.products.push(product2);
                     }
-                }
-                widgetCall();
                 //u.loader_cb = function () {
                 //u.initialized = true;
                 /* Start Loader Callback Tag Sending Code */
@@ -472,6 +470,8 @@ try {
                         "id": 'utag_##UTID##'
                     });
                 }
+                }
+                setTimeout(widgetCall, 1000);
                 //if (!u.initialized) {
                 //u.loader({"type" : "iframe", "src" : u.data.base_url + c.join(u.data.qsp_delim), "cb" : u.loader_cb, "loc" : "body", "id" : 'utag_##UTID##' });
                 //u.loader({"type" : "script", "src" : u.data.base_url, "cb" : u.loader_cb, "loc" : "script", "id" : 'utag_##UTID##' });
