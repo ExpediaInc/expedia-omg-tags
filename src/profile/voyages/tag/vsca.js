@@ -39,14 +39,14 @@ try{
       if (u.ev[a] || u.ev.all !== undefined) {
 
         var c, d, e, f;
-	//START Customised VSCA tag call
-	var vscabaseurl ="";
-	if(utag.cfg.path =="//tags.tiqcdn.com/utag/expedia/voyages/prod/"){
-	  vscabaseurl="https://secure.analytics.voyages-sncf.com/prod/2.1/agency-funnel/vsca.js";
-	}else {
-	  vscabaseurl="https://secure.analytics.voyages-sncf.com/test/2.1/agency-funnel/vsca.js";
-	}
-	//END Customised VSCA tag call
+  //START Customised VSCA tag call
+  var vscabaseurl ="";
+  if(utag.cfg.path =="//tags.tiqcdn.com/utag/expedia/voyages/prod/"){
+    vscabaseurl="https://secure.analytics.voyages-sncf.com/prod/2.1/agency-funnel/vsca.js";
+  }else {
+    vscabaseurl="https://secure.analytics.voyages-sncf.com/test/2.1/agency-funnel/vsca.js";
+  }
+  //END Customised VSCA tag call
         u.data = {
           "qsp_delim" : "&",
           "kvp_delim" : "=",
@@ -99,7 +99,7 @@ try{
 
       vsca_pageTag.contextData = {};
       vsca_pageTag.contextData.products = [];
-      if (b.utagPageName == "page.car.search.list" || b.utagPageName == "page.car.search.list.aws") {
+      if (b.utagPageName == "page.car.search.list" || b.utagPageName == "page.car.search.list.aws" || b.pageInfo.pageName == "page.car.search.list.aws") {
           vsca_pageTag.config.pageId = "CarSearch";
           vsca_pageTag.contextData.pageContext = "searchResult";
           var product0 = {
@@ -107,15 +107,15 @@ try{
               "outwardDepartureDate": b.checkInDate,
               "inwardDepartureDate": b.checkOutDate,
               "destination": {
-                  "stationCode": b.carDropOffLocationCode,
+                  "stationCode": b.entity.carSearch.carOffers[0].dropOffLocation.locationCode,
                   "stationName": b.entity.carSearch.searchCriteria.dropOffRegion.shortRegionName,
-                  "cityCode": b.carDropOffLocationCode,
+                  "cityCode": b.entity.carSearch.carOffers[0].dropOffLocation.locationCode,
                   "cityName": b.entity.carSearch.searchCriteria.dropOffRegion.shortRegionName
               },
               "origin": {
-                  "stationCode": b.carPickUpLocationCode,
+                  "stationCode": b.entity.carSearch.carOffers[0].pickUpLocation.locationCode,
                   "stationName": b.entity.carSearch.searchCriteria.pickUpRegion.shortRegionName,
-                  "cityCode": b.carPickUpLocationCode,
+                  "cityCode": b.entity.carSearch.carOffers[0].pickUpLocation.locationCode,
                   "cityName": b.entity.carSearch.searchCriteria.pickUpRegion.shortRegionName
               }
           }
@@ -205,7 +205,7 @@ try{
 
   widgetCall();
         //END Customised VSCA tag call
-	
+  
         if (u.data.static_params) {
           c.push(u.data.static_params);
         }
