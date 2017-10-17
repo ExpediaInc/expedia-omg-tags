@@ -97,19 +97,19 @@ function widgetCall() {
     if (utag_data.utagPageName == "page.Package.FC.Flight-Search-Roundtrip.Out") {
         vsca_pageTag.config.pageId = "FC.FlightSearch";
         vsca_pageTag.contextData = {
-            "pageContext": "searchResult",
-            "packageType":"FC"
+            "pageContext": "searchResults",
+            "packageType": "FC"
         }
-        vsca_pageTag.contextData.products =[];
+        vsca_pageTag.contextData.products = [];
         var product0 = {
             "productType": "Flight",
             "outwardDepartureDate": utag_data.entity.packageSearch.packageSearchParameters.isoFormatDepartureDate,
             "inwardDepartureDate": utag_data.entity.packageSearch.packageSearchParameters.isoFormatReturnDate,
             "destination": {
                 "stationCode": utag_data.destinationAirportCode,
-                "stationName":utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState || "" ,
+                "stationName": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState || "",
                 "cityCode": utag_data.destinationAirportCode,
-                "cityName": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState || "" 
+                "cityName": utag_data.entity.packageSearch.packageSearchParameters.flightSearchParameters.arrivalAirportCityState || ""
             },
             "origin": {
                 "stationCode": utag_data.originAirportCode,
@@ -120,126 +120,124 @@ function widgetCall() {
         }
         vsca_pageTag.contextData.products.push(product0);
     }
-    if(utag_data.utagPageName=="page.Package.fc.car.search.list" || utag_data.utagPageName=="page.Package.fc.car.search.list.aws"){
-        vsca_pageTag.config.pageId="FC.CarSearch";
-        vsca_pageTag.contextData.pageContext="searchResult";
-        vsca_pageTag.contextData.products =[];
+    if (utag_data.utagPageName == "page.Package.fc.car.search.list" || utag_data.utagPageName == "page.Package.fc.car.search.list.aws" || utag_data.pageInfo.pageName == "page.Package.fc.car.search.list.aws") {
+        vsca_pageTag.config.pageId = "FC.CarSearch";
+        vsca_pageTag.contextData.pageContext = "searchResults";
+        vsca_pageTag.contextData.products = [];
         var product0 = {
-            "productType":"Car",
-            "inwardDepartureDate":utag_data.entity.carSearch.searchCriteria.isoFormatDropOffDate.substring(0, 10),
-            "outwardDepartureDate":utag_data.entity.carSearch.searchCriteria.isoFormatPickUpDate.substring(0, 10),
-            "destination":{
-                "stationCode":utag_data.entity.carSearch.carOffers[0].dropOffLocation.locationCode,
-                "stationName" : utag_data.entity.carSearch.searchCriteria.dropOffRegion.shortRegionName,
-                "cityCode" : utag_data.entity.carSearch.carOffers[0].dropOffLocation.locationCode,
+            "productType": "Car",
+            "inwardDepartureDate": utag_data.entity.carSearch.searchCriteria.isoFormatDropOffDate.substring(0, 10),
+            "outwardDepartureDate": utag_data.entity.carSearch.searchCriteria.isoFormatPickUpDate.substring(0, 10),
+            "destination": {
+                "stationCode": utag_data.entity.carSearch.carOffers[0].dropOffLocation.locationCode,
+                "stationName": utag_data.entity.carSearch.searchCriteria.dropOffRegion.shortRegionName,
+                "cityCode": utag_data.entity.carSearch.carOffers[0].dropOffLocation.locationCode,
                 "cityName": utag_data.entity.carSearch.searchCriteria.dropOffRegion.shortRegionName
             },
-            "origin":{
-                "stationCode":utag_data.entity.carSearch.carOffers[0].pickUpLocation.locationCode,
-                "stationName" : utag_data.entity.carSearch.searchCriteria.pickUpRegion.shortRegionName,
-                "cityCode" : utag_data.entity.carSearch.carOffers[0].pickUpLocation.locationCode,
+            "origin": {
+                "stationCode": utag_data.entity.carSearch.carOffers[0].pickUpLocation.locationCode,
+                "stationName": utag_data.entity.carSearch.searchCriteria.pickUpRegion.shortRegionName,
+                "cityCode": utag_data.entity.carSearch.carOffers[0].pickUpLocation.locationCode,
                 "cityName": utag_data.entity.carSearch.searchCriteria.pickUpRegion.shortRegionName
             }
         }
         vsca_pageTag.contextData.products.push(product0);
     }
-    if (utag_data.utagPageName == "page.Checkout.Payment" )
-    {   vsca_pageTag.config.pageId = "FC.Payment";
+    if (utag_data.utagPageName == "page.Checkout.Payment") {
+        vsca_pageTag.config.pageId = "FC.Payment";
         vsca_pageTag.contextData = {
-            "pageContext": "payment",
-            "packageType":"FC"
+            "pageContext": "basket",
+            "packageType": "FC"
         };
         vsca_pageTag.contextData.products = [];
         var product0 = {
-            "productType":"Car",
-            "price":utag_data.entity.checkout.cartTotal.amount,
+            "productType": "Car",
+            "price": utag_data.entity.checkout.cartTotal.amount,
             "inwardDepartureDate": utag_data.checkOutDate,
             "outwardDepartureDate": utag_data.checkInDate,
-            "agency":utag_data.entity.checkout.cars[0].vendorNameLocalized,
-            "carComfort":utag_data.entity.checkout.cars[0].carType,
-            "destination":{
-                "stationCode":utag_data.entity.checkout.cars[0].dropOffLocation.locationCode,
-                "stationName" : utag_data.entity.checkout.cars[0].dropOffLocation.address.city,
-                "cityCode" : utag_data.entity.checkout.cars[0].dropOffLocation.locationCode,
+            "agency": utag_data.entity.checkout.cars[0].vendorNameLocalized,
+            "carComfort": utag_data.entity.checkout.cars[0].carType,
+            "destination": {
+                "stationCode": utag_data.entity.checkout.cars[0].dropOffLocation.locationCode,
+                "stationName": utag_data.entity.checkout.cars[0].dropOffLocation.address.city,
+                "cityCode": utag_data.entity.checkout.cars[0].dropOffLocation.locationCode,
                 "cityName": utag_data.entity.checkout.cars[0].dropOffLocation.address.city
             },
-            "origin":{
-                "stationCode":utag_data.entity.checkout.cars[0].pickUpLocation.locationCode,
-                "stationName" : utag_data.entity.checkout.cars[0].pickUpLocation.address.city,
-                "cityCode" : utag_data.entity.checkout.cars[0].pickUpLocation.locationCode,
+            "origin": {
+                "stationCode": utag_data.entity.checkout.cars[0].pickUpLocation.locationCode,
+                "stationName": utag_data.entity.checkout.cars[0].pickUpLocation.address.city,
+                "cityCode": utag_data.entity.checkout.cars[0].pickUpLocation.locationCode,
                 "cityName": utag_data.entity.checkout.cars[0].pickUpLocation.address.city
             }
         };
         var product1 = {
             "productType": "Flight",
-            "price":utag_data.entity.checkout.cartTotal.amount,
+            "price": utag_data.entity.checkout.cartTotal.amount,
             "inwardDepartureDate": utag_data.checkOutDate,
             "outwardDepartureDate": utag_data.checkInDate,
             "destination": {
                 "stationCode": utag_data.entity.checkout.flightOffers[0].flight.legs[0].arrivalAirportCode,
                 "stationName": utag_data.entity.checkout.flightOffers[0].originAirportCityState,
                 "cityCode": utag_data.entity.checkout.flightOffers[0].flight.legs[0].arrivalAirportCode,
-                "cityName": utag_data.entity.checkout.flightOffers[0].originAirportCityState  // doesn't exist in this utag
+                "cityName": utag_data.entity.checkout.flightOffers[0].originAirportCityState   // doesn't exist in this utag
             },
             "origin": {
                 "stationCode": utag_data.entity.checkout.flightOffers[0].flight.legs[0].departureAirportCode,
-                "stationName": utag_data.entity.checkout.flightOffers[0].destinationAirportCityState , // doesn't exist in this utag
+                "stationName": utag_data.entity.checkout.flightOffers[0].destinationAirportCityState, // doesn't exist in this utag
                 "cityCode": utag_data.entity.checkout.flightOffers[0].flight.legs[0].departureAirportCode,
-                "cityName": utag_data.entity.checkout.flightOffers[0].destinationAirportCityState// doesn't exist in this utag
+                "cityName": utag_data.entity.checkout.flightOffers[0].destinationAirportCityState // doesn't exist in this utag
             }
         }
         vsca_pageTag.contextData.products.push(product1);
         vsca_pageTag.contextData.products.push(product0);
     }
-
-    if (utag_data.utagPageName == "page.Checkout.Confirmation" )
-    {
+    if (utag_data.utagPageName == "page.Checkout.Confirmation") {
         vsca_pageTag.config.pageId = "FC.Confirmation";
         vsca_pageTag.contextData = {
-            "purchase":{
-                "orderPrice" : utag_data.entity.checkout.cartTotal.amount,
-                "purchaseId" : utag_data.entity.checkout.customerFacingItineraryNumber
+            "purchase": {
+                "orderPrice": utag_data.entity.checkout.cartTotal.amount,
+                "purchaseId": utag_data.entity.checkout.customerFacingItineraryNumber
             },
             "pageContext": "confirmation",
-            "packageType":"FC"
+            "packageType": "FC"
         };
         vsca_pageTag.contextData.products = [];
         var product0 = {
-            "productType":"Car",
-            "price":utag_data.entity.checkout.cartTotal.amount,
+            "productType": "Car",
+            "price": utag_data.entity.checkout.cartTotal.amount,
             "inwardDepartureDate": utag_data.checkOutDate,
             "outwardDepartureDate": utag_data.checkInDate,
-            "agency":utag_data.entity.checkout.cars[0].vendorNameLocalized,
-            "carComfort":utag_data.entity.checkout.cars[0].carType,
-            "destination":{
-                "stationCode":utag_data.entity.checkout.cars[0].dropOffLocation.locationCode,
-                "stationName" : utag_data.entity.checkout.cars[0].dropOffLocation.address.city,
-                "cityCode" : utag_data.entity.checkout.cars[0].dropOffLocation.locationCode,
+            "agency": utag_data.entity.checkout.cars[0].vendorNameLocalized,
+            "carComfort": utag_data.entity.checkout.cars[0].carType,
+            "destination": {
+                "stationCode": utag_data.entity.checkout.cars[0].dropOffLocation.locationCode,
+                "stationName": utag_data.entity.checkout.cars[0].dropOffLocation.address.city,
+                "cityCode": utag_data.entity.checkout.cars[0].dropOffLocation.locationCode,
                 "cityName": utag_data.entity.checkout.cars[0].dropOffLocation.address.city
             },
-            "origin":{
-                "stationCode":utag_data.entity.checkout.cars[0].pickUpLocation.locationCode,
-                "stationName" : utag_data.entity.checkout.cars[0].pickUpLocation.address.city,
-                "cityCode" : utag_data.entity.checkout.cars[0].pickUpLocation.locationCode,
+            "origin": {
+                "stationCode": utag_data.entity.checkout.cars[0].pickUpLocation.locationCode,
+                "stationName": utag_data.entity.checkout.cars[0].pickUpLocation.address.city,
+                "cityCode": utag_data.entity.checkout.cars[0].pickUpLocation.locationCode,
                 "cityName": utag_data.entity.checkout.cars[0].pickUpLocation.address.city
             }
         };
         var product1 = {
             "productType": "Flight",
-            "price":utag_data.entity.checkout.cartTotal.amount,
+            "price": utag_data.entity.checkout.cartTotal.amount,
             "inwardDepartureDate": utag_data.checkOutDate,
             "outwardDepartureDate": utag_data.checkInDate,
             "destination": {
                 "stationCode": utag_data.entity.checkout.flightOffers[0].flight.legs[0].arrivalAirportCode,
                 "stationName": utag_data.entity.checkout.flightOffers[0].originAirportCityState,
                 "cityCode": utag_data.entity.checkout.flightOffers[0].flight.legs[0].arrivalAirportCode,
-                "cityName": utag_data.entity.checkout.flightOffers[0].originAirportCityState  // doesn't exist in this utag
+                "cityName": utag_data.entity.checkout.flightOffers[0].originAirportCityState   // doesn't exist in this utag
             },
             "origin": {
                 "stationCode": utag_data.entity.checkout.flightOffers[0].flight.legs[0].departureAirportCode,
-                "stationName": utag_data.entity.checkout.flightOffers[0].destinationAirportCityState , // doesn't exist in this utag
+                "stationName": utag_data.entity.checkout.flightOffers[0].destinationAirportCityState, // doesn't exist in this utag
                 "cityCode": utag_data.entity.checkout.flightOffers[0].flight.legs[0].departureAirportCode,
-                "cityName": utag_data.entity.checkout.flightOffers[0].destinationAirportCityState// doesn't exist in this utag
+                "cityName": utag_data.entity.checkout.flightOffers[0].destinationAirportCityState // doesn't exist in this utag
             }
         }
         vsca_pageTag.contextData.products.push(product1);
