@@ -43,13 +43,13 @@ try {
         //##UTENABLEDEBUG##utag.DB("send:##UTID##");
 
         var c, d, e, f, i;
-	//START Customised VSCA tag call
-	var vscabaseurl ="";
-	if(utag.cfg.path =="//tags.tiqcdn.com/utag/expedia/voyages/prod/"){
-	  vscabaseurl="https://secure.analytics.voyages-sncf.com/prod/2.1/agency-funnel/vsca.js";
-	}else {
-	  vscabaseurl="https://secure.analytics.voyages-sncf.com/test/2.1/agency-funnel/vsca.js";
-	}
+  //START Customised VSCA tag call
+  var vscabaseurl ="";
+  if(utag.cfg.path =="//tags.tiqcdn.com/utag/expedia/voyages/prod/"){
+    vscabaseurl="https://secure.analytics.voyages-sncf.com/prod/2.1/agency-funnel/vsca.js";
+  }else {
+    vscabaseurl="https://secure.analytics.voyages-sncf.com/test/2.1/agency-funnel/vsca.js";
+  }
         u.data = {
           /* Initialize default tag parameter values here */
           /* Examples: */
@@ -120,7 +120,7 @@ function widgetCall() {
         }
         vsca_pageTag.contextData.products.push(product0);
     }
-    if(utag_data.utagPageName=="page.Package.fc.car.search.list" || utag_data.utagPageName=="page.Package.fc.car.search.list.aws"){
+    if(utag_data.utagPageName=="page.Package.fc.car.search.list" || utag_data.utagPageName=="page.Package.fc.car.search.list.aws" || utag_data.pageInfo.pageName=="page.Package.fc.car.search.list.aws"){
         vsca_pageTag.config.pageId="FC.CarSearch";
         vsca_pageTag.contextData.pageContext="searchResult";
         vsca_pageTag.contextData.products =[];
@@ -261,19 +261,19 @@ widgetCall();
 
         /* Start Loader Function Call */
         /* Un-comment the single-line JavaScript comments ("//") to use Loader. */
-	u.loader_cb = function() {
-	  u.initialized = true;
-	};
+  u.loader_cb = function() {
+    u.initialized = true;
+  };
           if (!u.initialized) {
             //u.loader({"type" : "iframe", "src" : u.data.base_url + c.join(u.data.qsp_delim), "cb" : u.loader_cb, "loc" : "body", "id" : 'utag_##UTID##' });
             u.loader({
-	      "type" : "script", 
-	      "src" : u.data.base_url, 
-	      "cb" : u.loader_cb,
-	      "loc" : "script", 
-	      "id" : 'utag_##UTID##' 
-	    });
-	  }
+        "type" : "script", 
+        "src" : u.data.base_url, 
+        "cb" : u.loader_cb,
+        "loc" : "script", 
+        "id" : 'utag_##UTID##' 
+      });
+    }
           //if (!u.initialized) {
             //u.loader({"type" : "iframe", "src" : u.data.base_url + c.join(u.data.qsp_delim), "cb" : u.loader_cb, "loc" : "body", "id" : 'utag_##UTID##' });
             //u.loader({"type" : "script", "src" : u.data.base_url, "cb" : u.loader_cb, "loc" : "script", "id" : 'utag_##UTID##' });
