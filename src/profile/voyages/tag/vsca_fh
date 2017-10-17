@@ -139,7 +139,7 @@ try {
           vsca_pageTag.contextData.products = [];
           var product0 = {            
               "productType": "Hotel",
-                          "hotelId": "",
+                          "hotelId": utag_data.entity.packageSearch.packageSearchParameters.packageHotelSearchParameters.selectedHotelId,
                           "hotelName": "",
                           "starRating": "",
                           "outwardDepartureDate": utag_data.checkInDate,
@@ -189,7 +189,7 @@ try {
           }
           vsca_pageTag.contextData.products.push(product0);            
       }    
-      if (utag_data.utagPageName == "page.Package.Ratedetails") {        
+      if (utag_data.utagPageName == "page.Package.Ratedetails" || utag_data.utagPageName == "page.Packages.RateDetails") {        
           vsca_pageTag.config.pageId = "FH.Detail";        
           vsca_pageTag.contextData = {            
               "pageContext": "basket",
@@ -302,7 +302,7 @@ try {
           vsca_pageTag.contextData = {            
               "purchase": {                
                   "orderPrice": utag_data.entity.checkout.cartTotal.amount,
-                                  "purchaseId": utag_data.entity.checkout.itineraryNumber            
+                                  "purchaseId": utag_data.entity.checkout.customerFacingItineraryNumber            
               },
                           "pageContext": "confirmation",
                           "packageType": "FH"        
