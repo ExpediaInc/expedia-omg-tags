@@ -88,122 +88,122 @@ try{
           u.data.url = location.protocol + "//" + u.data.url;
         }
         //START Customised VSCA tag call
-  window.vsca_pageTag = window.vsca_pageTag || {};
+	window.vsca_pageTag = window.vsca_pageTag || {};
 
-  function widgetCall() {
-      vsca_pageTag.config = {};
-      vsca_pageTag.config.siteId = "agency-funnel";
-      vsca_pageTag.config.vsca_version = "2.1";
-      vsca_pageTag.config.country = "FR";
-      vsca_pageTag.config.language = "fr";
+	function widgetCall() {
+	    vsca_pageTag.config = {};
+	    vsca_pageTag.config.siteId = "agency-funnel";
+	    vsca_pageTag.config.vsca_version = "2.1";
+	    vsca_pageTag.config.country = "FR";
+	    vsca_pageTag.config.language = "fr";
 
-      vsca_pageTag.contextData = {};
-      vsca_pageTag.contextData.products = [];
-      if (b.utagPageName == "page.car.search.list" || b.utagPageName == "page.car.search.list.aws") {
-          vsca_pageTag.config.pageId = "CarSearch";
-          vsca_pageTag.contextData.pageContext = "searchResult";
-          var product0 = {
-              "productType": "Car",
-              "outwardDepartureDate": b.checkInDate,
-              "inwardDepartureDate": b.checkOutDate,
-              "destination": {
-                  "stationCode": b.carDropOffLocationCode,
-                  "stationName": b.entity.carSearch.searchCriteria.dropOffRegion.shortRegionName,
-                  "cityCode": b.carDropOffLocationCode,
-                  "cityName": b.entity.carSearch.searchCriteria.dropOffRegion.shortRegionName
-              },
-              "origin": {
-                  "stationCode": b.carPickUpLocationCode,
-                  "stationName": b.entity.carSearch.searchCriteria.pickUpRegion.shortRegionName,
-                  "cityCode": b.carPickUpLocationCode,
-                  "cityName": b.entity.carSearch.searchCriteria.pickUpRegion.shortRegionName
-              }
-          }
-          vsca_pageTag.contextData.products.push(product0);
-      }
-      if (b.utagPageName == "page.Cars.Infosite.Information") {        
-          vsca_pageTag.config.pageId = "CarInfosite";        
-          vsca_pageTag.contextData.pageContext = "funnelGeneric";        
-          var product0 = {            
-              "productType": "Car",
-              "price": 0,
-              "outwardDepartureDate": b.checkInDate,
-              "inwardDepartureDate": b.checkOutDate,
-              "agency": b.entity.carDetails.carVendorCode,
-              "carComfort": b.entity.carDetails.carType,
-              "destination": {                
-                  "stationCode": "",
-                  "stationName": b.entity.carDetails.dropOffLocation.address.city,
-                  "cityCode": "",
-                  "cityName": b.entity.carDetails.dropOffLocation.address.city            
-              },
-              "origin": {                
-                  "stationCode": "",
-                  "stationName": b.entity.carDetails.pickUpLocation.address.city,
-                  "cityCode": "",
-                  "cityName": b.entity.carDetails.pickUpLocation.address.city        
-              }        
-          }        
-          vsca_pageTag.contextData.products.push(product0);    
-      }
-      if (b.utagPageName == "page.Cars.Checkout.Payment") {
-          vsca_pageTag.config.pageId = "CarPayment";
-          vsca_pageTag.contextData.pageContext = "payment";
-          var product0 = {
-              "productType": "Car",
-              "price": b.entity.checkout.cartTotal.amount,
-              "outwardDepartureDate": b.checkInDate,
-              "inwardDepartureDate": b.checkOutDate,
-              "agency": b.entity.checkout.car.vendorNameLocalized,
-              "carComfort": b.entity.checkout.car.carType,
-              "destination": {
-                  "stationCode": b.carDropOffLocationCode,
-                  "stationName": b.entity.checkout.car.dropOffLocation.address.city,
-                  "cityCode": b.carDropOffLocationCode,
-                  "cityName": b.entity.checkout.car.dropOffLocation.address.city
-              },
-              "origin": {
-                  "stationCode": b.carPickUpLocationCode,
-                  "stationName": b.entity.checkout.car.pickUpLocation.address.city,
-                  "cityCode": b.carPickUpLocationCode,
-                  "cityName": b.entity.checkout.car.pickUpLocation.address.city
-              }
-          }
-          vsca_pageTag.contextData.products.push(product0);
-      }
+	    vsca_pageTag.contextData = {};
+	    vsca_pageTag.contextData.products = [];
+	    if (b.utagPageName == "page.car.search.list" || b.utagPageName == "page.car.search.list.aws" || b.pageInfo.pageName == "page.car.search.list.aws") {
+	        vsca_pageTag.config.pageId = "CarSearch";
+	        vsca_pageTag.contextData.pageContext = "searchResults";
+	        var product0 = {
+	            "productType": "Car",
+	            "outwardDepartureDate": b.checkInDate,
+	            "inwardDepartureDate": b.checkOutDate,
+	            "destination": {
+	                "stationCode": b.entity.carSearch.carOffers[0].dropOffLocation.locationCode,
+	                "stationName": b.entity.carSearch.searchCriteria.dropOffRegion.shortRegionName,
+	                "cityCode": b.entity.carSearch.carOffers[0].dropOffLocation.locationCode,
+	                "cityName": b.entity.carSearch.searchCriteria.dropOffRegion.shortRegionName
+	            },
+	            "origin": {
+	                "stationCode": b.entity.carSearch.carOffers[0].pickUpLocation.locationCode,
+	                "stationName": b.entity.carSearch.searchCriteria.pickUpRegion.shortRegionName,
+	                "cityCode": b.entity.carSearch.carOffers[0].pickUpLocation.locationCode,
+	                "cityName": b.entity.carSearch.searchCriteria.pickUpRegion.shortRegionName
+	            }
+	        }
+	        vsca_pageTag.contextData.products.push(product0);
+	    }
+	    if (b.utagPageName == "page.Cars.Infosite.Information") {        
+	        vsca_pageTag.config.pageId = "CarInfosite";        
+	        vsca_pageTag.contextData.pageContext = "funnelGeneric";        
+	        var product0 = {            
+	            "productType": "Car",
+	            "price": 0,
+	            "outwardDepartureDate": b.checkInDate,
+	            "inwardDepartureDate": b.checkOutDate,
+	            "agency": b.entity.carDetails.carVendorCode,
+	            "carComfort": b.entity.carDetails.carType,
+	            "destination": {                
+	                "stationCode": "",
+	                "stationName": b.entity.carDetails.dropOffLocation.address.city,
+	                "cityCode": "",
+	                "cityName": b.entity.carDetails.dropOffLocation.address.city            
+	            },
+	            "origin": {                
+	                "stationCode": "",
+	                "stationName": b.entity.carDetails.pickUpLocation.address.city,
+	                "cityCode": "",
+	                "cityName": b.entity.carDetails.pickUpLocation.address.city        
+	            }        
+	        }        
+	        vsca_pageTag.contextData.products.push(product0);    
+	    }
+	    if (b.utagPageName == "page.Cars.Checkout.Payment") {
+	        vsca_pageTag.config.pageId = "CarPayment";
+	        vsca_pageTag.contextData.pageContext = "basket";
+	        var product0 = {
+	            "productType": "Car",
+	            "price": b.entity.checkout.cartTotal.amount,
+	            "outwardDepartureDate": b.checkInDate,
+	            "inwardDepartureDate": b.checkOutDate,
+	            "agency": b.entity.checkout.car.vendorNameLocalized,
+	            "carComfort": b.entity.checkout.car.carType,
+	            "destination": {
+	                "stationCode": b.carDropOffLocationCode,
+	                "stationName": b.entity.checkout.car.dropOffLocation.address.city,
+	                "cityCode": b.carDropOffLocationCode,
+	                "cityName": b.entity.checkout.car.dropOffLocation.address.city
+	            },
+	            "origin": {
+	                "stationCode": b.carPickUpLocationCode,
+	                "stationName": b.entity.checkout.car.pickUpLocation.address.city,
+	                "cityCode": b.carPickUpLocationCode,
+	                "cityName": b.entity.checkout.car.pickUpLocation.address.city
+	            }
+	        }
+	        vsca_pageTag.contextData.products.push(product0);
+	    }
 
-      if (b.utagPageName == "page.Cars.Checkout.Confirmation") {
-          vsca_pageTag.config.pageId = "CarConfirmation";
-          vsca_pageTag.contextData.pageContext = "confirmation";
-          vsca_pageTag.contextData.purchase = {
-              "orderPrice": b.entity.checkout.cartTotal.amount,
-              "purchaseId": b.entity.checkout.itineraryNumber
-          }
-          var product0 = {
-              "productType": "Car",
-              "outwardDepartureDate": b.checkInDate,
-              "inwardDepartureDate": b.checkOutDate,
-              "agency": b.entity.checkout.car.carVendor,
-              "carComfort": b.entity.checkout.car.carType,
-              "destination": {
-                  "stationCode": b.carDropOffLocationCode,
-                  "stationName": b.entity.checkout.car.dropOffLocation.address.city,
-                  "cityCode": b.carDropOffLocationCode,
-                  "cityName": b.entity.checkout.car.dropOffLocation.address.city
-              },
-              "origin": {
-                  "stationCode": b.carPickUpLocationCode,
-                  "stationName": b.entity.checkout.car.pickUpLocation.address.city,
-                  "cityCode": b.carPickUpLocationCode,
-                  "cityName": b.entity.checkout.car.pickUpLocation.address.city
-              }
-          }
-          vsca_pageTag.contextData.products.push(product0);
-      }
+	    if (b.utagPageName == "page.Cars.Checkout.Confirmation") {
+	        vsca_pageTag.config.pageId = "CarConfirmation";
+	        vsca_pageTag.contextData.pageContext = "confirmation";
+	        vsca_pageTag.contextData.purchase = {
+	            "orderPrice": b.entity.checkout.cartTotal.amount,
+	            "purchaseId": b.entity.checkout.customerFacingItineraryNumber
+	        }
+	        var product0 = {
+	            "productType": "Car",
+	            "outwardDepartureDate": b.checkInDate,
+	            "inwardDepartureDate": b.checkOutDate,
+	            "agency": b.entity.checkout.car.carVendor,
+	            "carComfort": b.entity.checkout.car.carType,
+	            "destination": {
+	                "stationCode": b.carDropOffLocationCode,
+	                "stationName": b.entity.checkout.car.dropOffLocation.address.city,
+	                "cityCode": b.carDropOffLocationCode,
+	                "cityName": b.entity.checkout.car.dropOffLocation.address.city
+	            },
+	            "origin": {
+	                "stationCode": b.carPickUpLocationCode,
+	                "stationName": b.entity.checkout.car.pickUpLocation.address.city,
+	                "cityCode": b.carPickUpLocationCode,
+	                "cityName": b.entity.checkout.car.pickUpLocation.address.city
+	            }
+	        }
+	        vsca_pageTag.contextData.products.push(product0);
+	    }
 
-  }
+	}
 
-  widgetCall();
+	widgetCall();
         //END Customised VSCA tag call
 	
         if (u.data.static_params) {
